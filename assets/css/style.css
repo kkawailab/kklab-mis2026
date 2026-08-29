@@ -190,6 +190,18 @@ button { font: inherit; }
   margin: 0 0 30px; color: var(--ink); font-family: var(--serif);
   font-size: clamp(24px, 2.4vw, 34px); line-height: 1.65;
 }
+.ai-policy { margin: 36px 0 0; padding: 22px 24px; background: var(--white); border-left: 3px solid var(--lime); box-shadow: 0 8px 28px rgba(16,42,42,.05); }
+.ai-policy-label {
+  margin: 0 0 14px; color: var(--ink-soft); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+}
+.ai-policy ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.ai-policy li { display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: baseline; }
+.ai-policy b { color: var(--ink); font-size: 13px; letter-spacing: .06em; }
+.ai-policy b::before {
+  content: ""; display: inline-block; width: 8px; aspect-ratio: 1; margin-right: 8px;
+  background: var(--lime); border: 1px solid var(--ink); border-radius: 50%; vertical-align: 1px;
+}
+.ai-policy span { color: var(--ink-soft); font-size: 13px; line-height: 1.7; }
 .learning-points { border-top: 1px solid var(--ink); }
 .point-card {
   min-height: 128px; padding: 24px 0; display: grid; grid-template-columns: 70px 1fr;
@@ -226,6 +238,10 @@ button { font: inherit; }
 .schedule-copy { position: sticky; top: 120px; align-self: start; }
 .schedule-copy .section-number { color: rgba(255,255,255,.5); }
 .schedule-copy > p:not(.section-number, .schedule-note) { margin: 30px 0 0; color: rgba(255,255,255,.68); font-size: 14px; }
+.ai-mark {
+  display: inline-block; padding: 0 8px; color: var(--ink); background: var(--lime);
+  border-radius: 100px; font-size: 10px; font-weight: 800; letter-spacing: .1em; line-height: 1.8; vertical-align: 1px;
+}
 .schedule-facts { margin: 28px 0 0; display: grid; gap: 16px; }
 .schedule-facts div { display: grid; gap: 5px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.14); }
 .schedule-facts dt {
@@ -255,6 +271,24 @@ button { font: inherit; }
 }
 .module-item h3 { margin: 0 0 10px; font-family: var(--serif); font-size: clamp(21px, 2.2vw, 28px); font-weight: 500; }
 .module-item p { margin: 0; color: rgba(255,255,255,.56); font-size: 12px; }
+.session-list {
+  grid-column: 2 / -1; margin: 10px 0 0; padding: 0; list-style: none;
+  border-top: 1px solid rgba(255,255,255,.14);
+}
+.session-item {
+  padding: 18px 0; display: grid; grid-template-columns: 58px 92px 1fr; gap: 6px 18px;
+  align-items: start; border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.session-item:last-child { border-bottom: 0; padding-bottom: 4px; }
+.session-no { padding-top: 3px; color: var(--lime); font-size: 11px; font-weight: 800; letter-spacing: .08em; white-space: nowrap; }
+.session-date { padding-top: 2px; color: rgba(255,255,255,.5); font-family: var(--serif); font-size: 13px; white-space: nowrap; }
+.session-item h4 { margin: 0 0 6px; color: var(--white); font-size: 15px; font-weight: 700; letter-spacing: .02em; line-height: 1.5; }
+.session-item p { color: rgba(255,255,255,.6); font-size: 12px; line-height: 1.8; }
+.session-item .session-ai { margin-top: 8px; display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.8); }
+.session-ai b {
+  flex: none; margin-top: 3px; padding: 0 8px; color: var(--ink); background: var(--lime);
+  border-radius: 100px; font-size: 9px; font-weight: 800; letter-spacing: .1em; line-height: 1.8;
+}
 
 /* Resources */
 .materials-section { background: var(--paper-deep); }
@@ -366,7 +400,12 @@ button { font: inherit; }
   .module-item { grid-template-columns: 1fr auto; gap: 12px 20px; }
   .module-number { grid-column: 1; }
   .module-sessions { grid-column: 2; grid-row: 1; }
-  .module-item div { grid-column: 1 / -1; }
+  .module-item > div { grid-column: 1 / -1; }
+  .session-list { grid-column: 1 / -1; }
+  .session-item { grid-template-columns: auto 1fr; gap: 8px 14px; }
+  .session-item > div { grid-column: 1 / -1; }
+  .ai-policy { padding: 18px 18px; }
+  .ai-policy li { grid-template-columns: 1fr; gap: 4px; }
   .resource-grid { grid-template-columns: 1fr; }
   .resource-card, .resource-card:last-child { grid-column: auto; min-height: 300px; }
   .contact-layout { grid-template-columns: 1fr; gap: 44px; }
