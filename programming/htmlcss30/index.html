@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="HTML・CSS・JavaScript・Python を1日1テーマ×30日で学ぶ自習用カリキュラム。各日は解説・練習・理解度チェックで構成されます。経営情報 2026（担当教員：河合勝彦）。" />
+    <meta name="theme-color" content="#102a2a" />
+    <meta property="og:title" content="プログラミング入門30日｜経営情報 2026" />
+    <meta property="og:description" content="HTML・CSS・JavaScript・Python を1日1テーマ×30日で学ぶ自習用カリキュラム。各日は解説・練習・理解度チェックで構成されます。経営情報 2026（担当教員：河合勝彦）。" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://kklab.mobi/kklab-mis2026/programming/htmlcss30/" />
+    <title>プログラミング入門30日｜経営情報 2026</title>
+    <link rel="canonical" href="https://kklab.mobi/kklab-mis2026/programming/htmlcss30/" />
+    <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../assets/css/style.css?v=20260829d" />
+    <link rel="stylesheet" href="../../assets/css/programming.css?v=20260829" />
+    <script src="../../assets/js/main.js?v=20260828" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="../../index.html" aria-label="経営情報 2026 トップへ">
+          <span class="brand-mark" aria-hidden="true">MI</span>
+          <span class="brand-copy">
+            <strong>経営情報</strong>
+            <small>Management Information 2026</small>
+          </span>
+        </a>
+
+        <button
+          class="menu-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-button
+        >
+          <span class="menu-button-lines" aria-hidden="true"></span>
+          <span class="sr-only">メニューを開く</span>
+        </button>
+
+        <nav id="site-navigation" class="site-nav" aria-label="メインナビゲーション" data-navigation>
+          <a href="../../index.html#overview">授業概要</a>
+          <a href="../../index.html#news">お知らせ</a>
+          <a href="../../index.html#schedule">講義予定</a>
+          <a href="../../index.html#materials">資料・課題</a>
+          <a href="../../attendance/">出席確認</a>
+          <a href="../" class="is-active">プログラミング入門</a>
+          <a class="nav-contact" href="../../index.html#contact">問い合わせ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="top" class="page-hero" aria-labelledby="page-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="container page-hero-inner">
+          <div>
+            <ol class="breadcrumb" aria-label="現在位置">
+              <li><a href="../../index.html">経営情報 2026</a></li>
+              <li><a href="../">プログラミング入門</a></li>
+              <li><span aria-current="page">プログラミング入門30日</span></li>
+            </ol>
+            <p class="eyebrow"><span></span> Curriculum — 30 days</p>
+            <h1 id="page-title">プログラミング入門<em>30日</em></h1>
+            <p class="page-lead">1日1テーマ×30日で学ぶ自習用カリキュラムです。HTMLの基礎からはじめて、CSSによるデザイン、JavaScriptによる動きのあるページ、Pythonプログラミングの入門まで、HTML → HTML/CSS → JavaScript → Python の順に進みます。各日のタイトルをクリックすると、解説とサンプルコード、練習問題のページが開きます。ページ末尾の「理解度チェック」クイズに正解すると確認コード付きの提出用画面が表示されるので、スクリーンショットを撮って Teams の Class Notebook に提出してください。</p>
+            <div class="page-actions">
+              <a class="button button-primary" href="day01.html">
+                Day 1 から始める
+                <span aria-hidden="true">↘</span>
+              </a>
+              <a class="text-link" href="#phase-4">Python から始める <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="カリキュラムの概要">
+            <div class="hero-card-head">
+              <span>Curriculum overview</span>
+              <span class="status"><i aria-hidden="true"></i> 自習用</span>
+            </div>
+            <dl class="hero-facts">
+              <div>
+                <dt>構成</dt>
+                <dd>4部・全30日<br /><small>HTML → HTML/CSS → JavaScript → Python</small></dd>
+              </div>
+              <div>
+                <dt>各日の内容</dt>
+                <dd>解説 → 練習 → 理解度チェック<br /><small>練習には模範解答つき</small></dd>
+              </div>
+              <div>
+                <dt>必要なもの</dt>
+                <dd>テキストエディタとブラウザ<br /><small>Python は JupyterLab 実習環境で</small></dd>
+              </div>
+              <div>
+                <dt>提出</dt>
+                <dd>確認コード付き画面のスクリーンショット<br /><small>Teams の Class Notebook へ</small></dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section-tight" aria-label="カリキュラム目次">
+        <div class="container">
+          <ol class="phase-list">
+            <li class="phase" id="phase-1" style="--accent: var(--lime)">
+              <div class="phase-head">
+                <span class="phase-no">第1部</span>
+                <div>
+                  <h2>HTML</h2>
+                  <p>Webページの骨組みであるHTMLを学びます。テキストエディタとブラウザだけで始められます。</p>
+                </div>
+                <span class="phase-range">Day 1–8</span>
+              </div>
+              <ol class="day-list">
+                <li>
+                  <a class="day-row" href="day01.html">
+                    <span class="day-no">Day 1</span>
+                    <div>
+                      <h3>Webページのしくみ</h3>
+                      <p>ブラウザ・サーバー・HTMLの役割を知り、最初のHTMLファイルを作ってブラウザで開いてみる。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day02.html">
+                    <span class="day-no">Day 2</span>
+                    <div>
+                      <h3>HTMLの基本構造</h3>
+                      <p>&lt;!DOCTYPE html&gt;、html・head・body、title、文字コード(UTF-8)の指定。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day03.html">
+                    <span class="day-no">Day 3</span>
+                    <div>
+                      <h3>見出しと段落</h3>
+                      <p>h1〜h6 と p。文書の構造を意識してマークアップする。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day04.html">
+                    <span class="day-no">Day 4</span>
+                    <div>
+                      <h3>リンク</h3>
+                      <p>a タグと href 属性。相対パスと絶対パスの違い。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day05.html">
+                    <span class="day-no">Day 5</span>
+                    <div>
+                      <h3>画像</h3>
+                      <p>img タグの src と alt。画像サイズの指定と代替テキストの大切さ。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day06.html">
+                    <span class="day-no">Day 6</span>
+                    <div>
+                      <h3>リスト</h3>
+                      <p>ul・ol・li。箇条書きと番号付きリストの使い分け。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day07.html">
+                    <span class="day-no">Day 7</span>
+                    <div>
+                      <h3>表</h3>
+                      <p>table・tr・th・td で表を組む。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day08.html">
+                    <span class="day-no">Day 8</span>
+                    <div>
+                      <h3>フォーム</h3>
+                      <p>form・input・button。入力欄とボタンのあるページを作る。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+              </ol>
+            </li>
+            <li class="phase" id="phase-2" style="--accent: var(--coral)">
+              <div class="phase-head">
+                <span class="phase-no">第2部</span>
+                <div>
+                  <h2>HTML/CSS</h2>
+                  <p>CSSでページの見た目を整えます。仕上げに、ここまでの内容で1枚のページを制作します。</p>
+                </div>
+                <span class="phase-range">Day 9–16</span>
+              </div>
+              <ol class="day-list">
+                <li>
+                  <a class="day-row" href="day09.html">
+                    <span class="day-no">Day 9</span>
+                    <div>
+                      <h3>CSSとは</h3>
+                      <p>スタイルの3つの書き方(インライン・style タグ・外部ファイル)。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day10.html">
+                    <span class="day-no">Day 10</span>
+                    <div>
+                      <h3>セレクタ</h3>
+                      <p>要素・クラス・ID。スタイルを当てる対象の指定方法。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day11.html">
+                    <span class="day-no">Day 11</span>
+                    <div>
+                      <h3>文字の装飾</h3>
+                      <p>color、font-size、font-family、font-weight。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day12.html">
+                    <span class="day-no">Day 12</span>
+                    <div>
+                      <h3>背景と枠線</h3>
+                      <p>background、border、border-radius で角丸カードを作る。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day13.html">
+                    <span class="day-no">Day 13</span>
+                    <div>
+                      <h3>ボックスモデル</h3>
+                      <p>margin と padding。要素の余白のしくみを理解する。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day14.html">
+                    <span class="day-no">Day 14</span>
+                    <div>
+                      <h3>Flexboxレイアウト</h3>
+                      <p>display: flex で要素を横に並べる。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day15.html">
+                    <span class="day-no">Day 15</span>
+                    <div>
+                      <h3>レスポンシブデザイン</h3>
+                      <p>viewport とメディアクエリでスマートフォンに対応する。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day16.html">
+                    <span class="day-no">Day 16</span>
+                    <div>
+                      <h3>演習:自己紹介ページ</h3>
+                      <p>HTML と CSS を組み合わせて自己紹介ページを完成させる。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+              </ol>
+            </li>
+            <li class="phase" id="phase-3" style="--accent: var(--teal)">
+              <div class="phase-head">
+                <span class="phase-no">第3部</span>
+                <div>
+                  <h2>JavaScript</h2>
+                  <p>JavaScriptでページに動きをつけます。プログラミングの基本もここで身につけます。</p>
+                </div>
+                <span class="phase-range">Day 17–24</span>
+              </div>
+              <ol class="day-list">
+                <li>
+                  <a class="day-row" href="day17.html">
+                    <span class="day-no">Day 17</span>
+                    <div>
+                      <h3>JavaScriptとは</h3>
+                      <p>script タグと console.log。開発者ツールで動きを確認する。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day18.html">
+                    <span class="day-no">Day 18</span>
+                    <div>
+                      <h3>変数とデータ型</h3>
+                      <p>let・const、数値と文字列。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day19.html">
+                    <span class="day-no">Day 19</span>
+                    <div>
+                      <h3>条件分岐</h3>
+                      <p>if・else と比較演算子。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day20.html">
+                    <span class="day-no">Day 20</span>
+                    <div>
+                      <h3>繰り返し</h3>
+                      <p>for・while で同じ処理を繰り返す。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day21.html">
+                    <span class="day-no">Day 21</span>
+                    <div>
+                      <h3>関数</h3>
+                      <p>function、引数と戻り値。処理をまとめて再利用する。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day22.html">
+                    <span class="day-no">Day 22</span>
+                    <div>
+                      <h3>配列とオブジェクト</h3>
+                      <p>複数のデータをまとめて扱う。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day23.html">
+                    <span class="day-no">Day 23</span>
+                    <div>
+                      <h3>DOM操作とイベント</h3>
+                      <p>getElementById、textContent、クリックイベントでページを書き換える。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day24.html">
+                    <span class="day-no">Day 24</span>
+                    <div>
+                      <h3>演習:ミニアプリ</h3>
+                      <p>ボタンを押すと表示が変わるページを作る。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+              </ol>
+            </li>
+            <li class="phase" id="phase-4" style="--accent: var(--gold)">
+              <div class="phase-head">
+                <span class="phase-no">第4部</span>
+                <div>
+                  <h2>Python</h2>
+                  <p>Pythonプログラミングに入門します。<a href="https://kklab.mobi/jupyterlab_kklab/">JupyterLab 実習環境</a>を使えばブラウザだけで実行できます。</p>
+                </div>
+                <span class="phase-range">Day 25–30</span>
+              </div>
+              <ol class="day-list">
+                <li>
+                  <a class="day-row" href="day25.html">
+                    <span class="day-no">Day 25</span>
+                    <div>
+                      <h3>Pythonとは</h3>
+                      <p>JupyterLab(ブラウザ実習環境)でプログラムを実行してみる。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day26.html">
+                    <span class="day-no">Day 26</span>
+                    <div>
+                      <h3>変数と計算</h3>
+                      <p>数値・文字列、print、四則演算。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day27.html">
+                    <span class="day-no">Day 27</span>
+                    <div>
+                      <h3>条件分岐と繰り返し</h3>
+                      <p>if と for。インデントが構文の一部になっていることを理解する。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day28.html">
+                    <span class="day-no">Day 28</span>
+                    <div>
+                      <h3>リストと辞書</h3>
+                      <p>複数のデータをまとめて扱う。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day29.html">
+                    <span class="day-no">Day 29</span>
+                    <div>
+                      <h3>関数とモジュール</h3>
+                      <p>def で関数を定義し、import でモジュールを使う。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="day-row" href="day30.html">
+                    <span class="day-no">Day 30</span>
+                    <div>
+                      <h3>演習:グラフ描画</h3>
+                      <p>Matplotlib でデータをグラフにして、30日間のまとめとする。</p>
+                    </div>
+                    <span class="arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="back-band" aria-label="プログラミング入門へ戻る">
+        <div class="container">
+          <p>実習環境やサンプルコード集は「プログラミング入門」のページから。</p>
+          <a class="button button-primary" href="../">プログラミング入門へ <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark small" aria-hidden="true">MI</span>
+          <p><strong>経営情報 2026</strong><br /><span>担当教員：河合勝彦</span></p>
+        </div>
+        <div class="footer-meta">
+          <a href="../">プログラミング入門</a>
+          <a href="../../index.html">講義サイトのトップ</a>
+          <a href="#top">ページ上部へ <span aria-hidden="true">↑</span></a>
+          <small>© 2026 Katsuhiko Kawai</small>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

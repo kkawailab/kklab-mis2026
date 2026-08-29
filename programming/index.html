@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="経営情報 2026（担当教員：河合勝彦）のプログラミング入門ページ。HTML・CSS・JavaScript・Python を1日1テーマで学ぶ30日カリキュラム、ブラウザで使える実習環境、サンプルコード集へのリンクをまとめています。"
+    />
+    <meta name="theme-color" content="#102a2a" />
+    <meta property="og:title" content="プログラミング入門｜経営情報 2026" />
+    <meta
+      property="og:description"
+      content="HTML・CSS・JavaScript・Python を1日1テーマで学ぶ30日カリキュラムと、ブラウザで使える実習環境、サンプルコード集。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kklab.mobi/kklab-mis2026/programming/" />
+    <title>プログラミング入門｜経営情報 2026</title>
+    <link rel="canonical" href="https://kklab.mobi/kklab-mis2026/programming/" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260829d" />
+    <link rel="stylesheet" href="../assets/css/programming.css?v=20260829" />
+    <script src="../assets/js/main.js?v=20260828" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="../index.html" aria-label="経営情報 2026 トップへ">
+          <span class="brand-mark" aria-hidden="true">MI</span>
+          <span class="brand-copy">
+            <strong>経営情報</strong>
+            <small>Management Information 2026</small>
+          </span>
+        </a>
+
+        <button
+          class="menu-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-button
+        >
+          <span class="menu-button-lines" aria-hidden="true"></span>
+          <span class="sr-only">メニューを開く</span>
+        </button>
+
+        <nav id="site-navigation" class="site-nav" aria-label="メインナビゲーション" data-navigation>
+          <a href="../index.html#overview">授業概要</a>
+          <a href="../index.html#news">お知らせ</a>
+          <a href="../index.html#schedule">講義予定</a>
+          <a href="../index.html#materials">資料・課題</a>
+          <a href="../attendance/">出席確認</a>
+          <a href="./" class="is-active" aria-current="page">プログラミング入門</a>
+          <a class="nav-contact" href="../index.html#contact">問い合わせ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="top" class="page-hero" aria-labelledby="page-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="container page-hero-inner">
+          <div>
+            <ol class="breadcrumb" aria-label="現在位置">
+              <li><a href="../index.html">経営情報 2026</a></li>
+              <li><span aria-current="page">プログラミング入門</span></li>
+            </ol>
+            <p class="eyebrow"><span></span> Programming — 自習教材</p>
+            <h1 id="page-title">プログラミング<em>入門</em></h1>
+            <p class="page-lead">
+              HTML・CSS・JavaScript・Python を1日1テーマで学ぶ30日カリキュラムと、ブラウザだけで使える実習環境、復習・自習用のサンプルコード集をまとめました。講義の予習・復習に、そしてAIが書いたコードを自分の目で読み解くための基礎づくりに使ってください。
+            </p>
+            <div class="page-actions">
+              <a class="button button-primary" href="htmlcss30/">
+                30日カリキュラムを始める
+                <span aria-hidden="true">↘</span>
+              </a>
+              <a class="text-link" href="https://kklab.mobi/jupyterlab_kklab/">実習環境を開く <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="教材の概要">
+            <div class="hero-card-head">
+              <span>Materials at a glance</span>
+              <span class="status"><i aria-hidden="true"></i> 自習用</span>
+            </div>
+            <dl class="hero-facts">
+              <div>
+                <dt>カリキュラム</dt>
+                <dd>1日1テーマ × 30日<br /><small>HTML → HTML/CSS → JavaScript → Python</small></dd>
+              </div>
+              <div>
+                <dt>実習環境</dt>
+                <dd>ブラウザのみ<br /><small>インストール不要の JupyterLab</small></dd>
+              </div>
+              <div>
+                <dt>サンプル集</dt>
+                <dd>JavaScript／Python／データベース<br /><small>可視化・地図・機械学習の作例つき</small></dd>
+              </div>
+              <div>
+                <dt>対象</dt>
+                <dd>プログラミング未経験〜初級<br /><small>講義の受講に必須ではありません</small></dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section id="curriculum" class="section section-tight" aria-labelledby="curriculum-title">
+        <div class="container">
+          <div class="section-heading compact split-heading">
+            <div>
+              <p class="section-number">01 — Curriculum</p>
+              <h2 id="curriculum-title">入門カリキュラム</h2>
+            </div>
+            <p class="heading-description">
+              1日1テーマ、30日で一巡する自習用カリキュラムです。各日は「解説 → 練習 → 理解度チェック」の順に進み、理解度チェックに正解すると確認コード付きの画面が表示されます。
+            </p>
+          </div>
+
+          <div class="curriculum-feature">
+            <a class="curriculum-main" href="htmlcss30/">
+              <p class="resource-label">Curriculum — 30 days</p>
+              <h3>プログラミング入門30日</h3>
+              <p>
+                Webページの骨組みであるHTMLから始めて、CSSによるデザイン、JavaScriptによる動きのあるページ、そしてPythonでのデータ処理・グラフ描画まで。テキストエディタとブラウザがあれば今日から始められます。
+              </p>
+              <ul class="curriculum-flow" aria-label="学習の流れ">
+                <li><b>解説</b> 読む</li>
+                <li><b>練習</b> 手を動かす</li>
+                <li><b>理解度チェック</b> 確認コードを取得</li>
+              </ul>
+              <span class="resource-cta">目次を開く <span aria-hidden="true">→</span></span>
+            </a>
+
+            <ol class="phase-strip" aria-label="4つの部">
+              <li>
+                <a href="htmlcss30/#phase-1" style="--accent: var(--lime)">
+                  <span class="phase-no">第1部</span>
+                  <span><b>HTML</b><small>Webページの骨組みをつくる</small></span>
+                  <span class="phase-range">Day 1–8</span>
+                </a>
+              </li>
+              <li>
+                <a href="htmlcss30/#phase-2" style="--accent: var(--coral)">
+                  <span class="phase-no">第2部</span>
+                  <span><b>HTML / CSS</b><small>見た目を整え、1枚のページを完成させる</small></span>
+                  <span class="phase-range">Day 9–16</span>
+                </a>
+              </li>
+              <li>
+                <a href="htmlcss30/#phase-3" style="--accent: var(--teal)">
+                  <span class="phase-no">第3部</span>
+                  <span><b>JavaScript</b><small>ページに動きをつけ、プログラミングの基本を学ぶ</small></span>
+                  <span class="phase-range">Day 17–24</span>
+                </a>
+              </li>
+              <li>
+                <a href="htmlcss30/#phase-4" style="--accent: var(--gold)">
+                  <span class="phase-no">第4部</span>
+                  <span><b>Python</b><small>JupyterLab でデータ処理とグラフ描画に入門</small></span>
+                  <span class="phase-range">Day 25–30</span>
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="environment" class="section section-tight bg-white" aria-labelledby="environment-title">
+        <div class="container">
+          <div class="section-heading compact split-heading">
+            <div>
+              <p class="section-number">02 — Environment</p>
+              <h2 id="environment-title">オンライン実習環境</h2>
+            </div>
+            <p class="heading-description">ブラウザだけで使える Python／Jupyter 環境です。インストールは不要で、第4部（Python）の学習や講義中のAI演習でも利用します。</p>
+          </div>
+
+          <div class="link-grid">
+            <article class="link-card accent">
+              <p class="link-card-label">JupyterLab</p>
+              <h3><a href="https://kklab.mobi/jupyterlab_kklab/">JupyterLab 実習環境</a></h3>
+              <p>ブラウザで動作し、インストールは不要です。ノートブックを新規作成し、セルにコードを書いて Shift+Enter で実行します。</p>
+              <div class="link-card-meta">
+                <span class="open">開く</span>
+              </div>
+            </article>
+            <article class="link-card">
+              <p class="link-card-label">JupyterLite</p>
+              <h3><a href="https://kklab.mobi/kklab-jupyterlite/">オンライン開発環境（サンプルファイル付き）</a></h3>
+              <p>サンプルファイルをあらかじめ用意したブラウザ上の開発環境です。開いてすぐにコードを試せます。</p>
+              <div class="link-card-meta">
+                <span class="open">開く</span>
+                <a class="repo-link" href="https://github.com/kkawailab/kklab-jupyterlite">GitHub リポジトリ</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="interactive" class="section section-tight" aria-labelledby="interactive-title">
+        <div class="container">
+          <div class="section-heading compact split-heading">
+            <div>
+              <p class="section-number">03 — Interactive</p>
+              <h2 id="interactive-title">体験型教材・デモ</h2>
+            </div>
+            <p class="heading-description">操作しながら考える対話型の教材と、講義で紹介する地図・データ可視化の作例です。作例はソースコードも公開しています。</p>
+          </div>
+
+          <div class="link-group">
+            <h3 class="group-title">Interactive <b>体験型教材</b></h3>
+            <div class="link-grid">
+              <article class="link-card accent">
+                <p class="link-card-label">Game</p>
+                <h3><a href="https://kklab.mobi/trolley-problem/">トロッコ問題</a></h3>
+                <p>倫理的ジレンマを題材にしたゲーム形式の教材。選択を重ねながら、判断の根拠を考えます。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="link-group">
+            <h3 class="group-title">Demos <b>デモ・データ可視化</b></h3>
+            <div class="link-grid cols-3">
+              <article class="link-card">
+                <p class="link-card-label">Map</p>
+                <h3><a href="https://kklab.mobi/min_wage/">最低賃金マップ</a></h3>
+                <p>2024年度の都道府県別最低賃金を地図上に可視化した作例です。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                  <a class="repo-link" href="https://github.com/kkawailab/min_wage">GitHub リポジトリ</a>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Map</p>
+                <h3><a href="https://kklab.mobi/GIS_Schools/">愛知県 学校マップ</a></h3>
+                <p>愛知県内の学校を設置者別に色分けして表示する作例です。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                  <a class="repo-link" href="https://github.com/kkawailab/GIS_Schools">GitHub リポジトリ</a>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Map</p>
+                <h3><a href="https://katzkawai.org/kklab-geojson-nagoya/">名古屋市 区割り地図</a></h3>
+                <p>名古屋市16区の区割りをクリックで表示する作例です。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                  <a class="repo-link" href="https://github.com/katzkawai/kklab-geojson-nagoya">GitHub リポジトリ</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tutorials" class="section section-tight bg-deep" aria-labelledby="tutorials-title">
+        <div class="container">
+          <div class="section-heading compact split-heading">
+            <div>
+              <p class="section-number">04 — Tutorials</p>
+              <h2 id="tutorials-title" class="keep-all">サンプルコード・<wbr />チュートリアル</h2>
+            </div>
+            <p class="heading-description">復習・自習用のコード集です。「GitHub」と表示されているものは、リポジトリ上で README とコードを読む形式の教材です。</p>
+          </div>
+
+          <div class="link-group">
+            <h3 class="group-title">JavaScript / TypeScript <b>Web・可視化・機械学習</b></h3>
+            <div class="link-grid cols-3">
+              <article class="link-card">
+                <p class="link-card-label">Tutorial</p>
+                <h3><a href="https://kklab.mobi/Nodejs_Tutorial/">Node.js チュートリアル</a></h3>
+                <p>サーバーサイド JavaScript の基本を学びます。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Tutorial</p>
+                <h3><a href="https://github.com/kkawailab/TypeScript_Tutorial/">TypeScript チュートリアル</a></h3>
+                <p>型のある JavaScript、TypeScript の入門です。</p>
+                <div class="link-card-meta">
+                  <span class="open">GitHub</span>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Samples</p>
+                <h3><a href="https://kklab.mobi/kklab-ml5js-samples/">ml5.js サンプル集</a></h3>
+                <p>ブラウザで機械学習を動かすサンプル集です。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                  <a class="repo-link" href="https://github.com/kkawailab/kklab-ml5js-samples">GitHub</a>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Samples</p>
+                <h3><a href="https://kklab.mobi/kklab-D3-samples/">D3.js サンプル集</a></h3>
+                <p>データ可視化ライブラリ D3.js のサンプル集です。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                  <a class="repo-link" href="https://github.com/kkawailab/kklab-D3-samples">GitHub</a>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Samples</p>
+                <h3><a href="https://kklab.mobi/kklab-leafletJS-samples/">Leaflet.js サンプル集</a></h3>
+                <p>地図表示ライブラリ Leaflet.js のサンプル集です。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                  <a class="repo-link" href="https://github.com/kkawailab/kklab-leafletJS-samples">GitHub</a>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Samples</p>
+                <h3><a href="https://github.com/kkawailab/kklab-chartsJs-samples">Chart.js サンプル集</a></h3>
+                <p>グラフ描画ライブラリ Chart.js のサンプル集です。</p>
+                <div class="link-card-meta">
+                  <span class="open">GitHub</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="link-group">
+            <h3 class="group-title">Python <b>基礎・可視化・分析</b></h3>
+            <div class="link-grid cols-3">
+              <article class="link-card accent">
+                <p class="link-card-label">Tutorial</p>
+                <h3><a href="https://kklab.mobi/Python_Tutorial/">Python チュートリアル</a></h3>
+                <p>Python を基礎から学ぶチュートリアルです。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Samples</p>
+                <h3><a href="https://kklab.mobi/kklab-python-examples/">Python サンプル集</a></h3>
+                <p>Python の基本的な書き方を確認できるサンプル集です。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                  <a class="repo-link" href="https://github.com/kkawailab/kklab-python-examples">GitHub</a>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Samples</p>
+                <h3><a href="https://kklab.mobi/kklab-python-graph-samples/">Matplotlib グラフサンプル集</a></h3>
+                <p>Matplotlib によるグラフ描画の作例集。30日カリキュラム Day 30 の発展にも。</p>
+                <div class="link-card-meta">
+                  <span class="open">開く</span>
+                  <a class="repo-link" href="https://github.com/kkawailab/kklab-python-graph-samples">GitHub</a>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Tutorial</p>
+                <h3><a href="https://github.com/kkawailab/Python_Leafmap">Leafmap チュートリアル</a></h3>
+                <p>地理空間データを地図化する Leafmap の入門です。</p>
+                <div class="link-card-meta">
+                  <span class="open">GitHub</span>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Tutorial</p>
+                <h3><a href="https://github.com/kkawailab/kklab-statsmodels-tutorials">statsmodels チュートリアル</a></h3>
+                <p>統計分析ライブラリ statsmodels の入門です。</p>
+                <div class="link-card-meta">
+                  <span class="open">GitHub</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="link-group">
+            <h3 class="group-title">Database / Tools <b>データベース・開発ツール</b></h3>
+            <div class="link-grid cols-3">
+              <article class="link-card">
+                <p class="link-card-label">Tutorial</p>
+                <h3><a href="https://github.com/kkawailab/SQLite_Tutorial">SQLite チュートリアル</a></h3>
+                <p>軽量データベース SQLite で学ぶデータベース入門です。</p>
+                <div class="link-card-meta">
+                  <span class="open">GitHub</span>
+                </div>
+              </article>
+              <article class="link-card">
+                <p class="link-card-label">Tutorial</p>
+                <h3><a href="https://github.com/kkawailab/git-tutorial">Git チュートリアル</a></h3>
+                <p>バージョン管理ツール Git の基本操作を学びます。</p>
+                <div class="link-card-meta">
+                  <span class="open">GitHub</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tips" class="section section-tight" aria-labelledby="tips-title">
+        <div class="container">
+          <div class="section-heading compact split-heading">
+            <div>
+              <p class="section-number">05 — How to study</p>
+              <h2 id="tips-title">学び方のヒント</h2>
+            </div>
+            <p class="heading-description">本講義のAIポリシー「使う・検証する・区別する」は、プログラミングの学習でもそのまま当てはまります。</p>
+          </div>
+          <ul class="tips">
+            <li><b>順番に、少しずつ</b><span>30日カリキュラムは前の日の内容を前提に進みます。1日1テーマのペースで、飛ばさずに進めるのが近道です。</span></li>
+            <li><b>必ず自分で動かす</b><span>サンプルコードは読むだけでなく、実習環境に貼り付けて実行し、数値や文字を書き換えて結果の変化を確かめましょう。</span></li>
+            <li><b>AIに聞き、自分で検証する</b><span>エラーの意味やコードの説明は生成AIに尋ねて構いません。ただし、答えを鵜呑みにせず、実際に動かして確かめてから採用してください。</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="back-band" aria-label="講義サイトへ戻る">
+        <div class="container">
+          <p>講義予定・出席確認は講義サイトのトップから。</p>
+          <a class="button button-primary" href="../index.html">講義サイトのトップへ <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark small" aria-hidden="true">MI</span>
+          <p><strong>経営情報 2026</strong><br /><span>担当教員：河合勝彦</span></p>
+        </div>
+        <div class="footer-meta">
+          <a href="../index.html">講義サイトのトップ</a>
+          <a href="#top">ページ上部へ <span aria-hidden="true">↑</span></a>
+          <small>© 2026 Katsuhiko Kawai</small>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
