@@ -152,7 +152,10 @@ button { font: inherit; }
   min-height: 62px; display: grid; grid-template-columns: 100px 1fr; align-items: center; border-bottom: 1px solid var(--line);
 }
 .course-details dt { color: var(--ink-soft); font-size: 11px; font-weight: 600; }
-.course-details dd { margin: 0; font-size: 14px; font-weight: 700; }
+.course-details dd { margin: 0; font-size: 14px; font-weight: 700; line-height: 1.5; }
+.course-details dd small {
+  display: block; margin-top: 3px; color: var(--ink-soft); font-size: 11px; font-weight: 600; letter-spacing: .02em;
+}
 .course-card-note { margin: 22px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.7; }
 .hero-foot {
   position: absolute; z-index: 2; inset: auto 0 28px; display: flex; align-items: center; gap: 14px;
@@ -223,6 +226,12 @@ button { font: inherit; }
 .schedule-copy { position: sticky; top: 120px; align-self: start; }
 .schedule-copy .section-number { color: rgba(255,255,255,.5); }
 .schedule-copy > p:not(.section-number, .schedule-note) { margin: 30px 0 0; color: rgba(255,255,255,.68); font-size: 14px; }
+.schedule-facts { margin: 28px 0 0; display: grid; gap: 16px; }
+.schedule-facts div { display: grid; gap: 5px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.14); }
+.schedule-facts dt {
+  color: var(--lime); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+}
+.schedule-facts dd { margin: 0; color: rgba(255,255,255,.78); font-size: 13px; line-height: 1.7; }
 .schedule-note {
   margin: 30px 0 0; padding-top: 20px; color: rgba(255,255,255,.48);
   font-size: 11px; border-top: 1px solid rgba(255,255,255,.14);
@@ -230,13 +239,20 @@ button { font: inherit; }
 .schedule-note span { color: var(--lime); }
 .module-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255,255,255,.35); }
 .module-item {
-  min-height: 152px; padding: 30px 0; display: grid; grid-template-columns: 105px 1fr 72px;
+  min-height: 152px; padding: 30px 0; display: grid; grid-template-columns: 105px 1fr 132px;
   gap: 28px; align-items: start; border-bottom: 1px solid rgba(255,255,255,.14);
 }
 .module-number, .module-sessions {
   padding-top: 5px; color: var(--lime); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
 }
-.module-sessions { color: rgba(255,255,255,.46); text-align: right; letter-spacing: .04em; }
+.module-sessions {
+  display: grid; gap: 8px; justify-items: end;
+  color: rgba(255,255,255,.46); text-align: right; letter-spacing: .04em;
+}
+.module-dates {
+  color: var(--white); font-family: var(--serif); font-size: 14px; font-weight: 500;
+  letter-spacing: 0; text-transform: none; white-space: nowrap;
+}
 .module-item h3 { margin: 0 0 10px; font-family: var(--serif); font-size: clamp(21px, 2.2vw, 28px); font-weight: 500; }
 .module-item p { margin: 0; color: rgba(255,255,255,.56); font-size: 12px; }
 
