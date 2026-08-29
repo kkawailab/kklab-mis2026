@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------
-   Sub pages: プログラミング入門 / プログラミング入門30日
+   Sub pages: プログラミング入門 / プログラミング入門30日 / 出席確認 / 検証
    style.css のトークン・ヘッダー・フッターを前提に、下層ページ専用の
    コンポーネントを追加する。
    ------------------------------------------------------------------ */
@@ -266,6 +266,27 @@ details.answer[open] summary::before { content: "−"; }
   display: none; margin-bottom: 18px; padding: 12px 16px; color: #8f2f1f;
   background: rgba(240, 128, 104, 0.16); border-left: 3px solid var(--coral); font-size: 13.5px; font-weight: 700;
 }
+
+/* Attendance quiz / verify form */
+.quiz fieldset { min-width: 0; margin: 0 0 6px; padding: 0; border: 0; }
+.quiz.attendance h2::before { content: "Attendance quiz"; }
+.quiz.verify h2::before { content: "Verify"; }
+.quiz .qno { margin-right: 6px; color: var(--coral); font-weight: 800; letter-spacing: 0.04em; }
+.question.wrong { border-color: var(--coral); background: rgba(240, 128, 104, 0.1); }
+.question .explain {
+  display: none; margin-top: 12px; padding: 12px 14px; font-size: 13.5px; line-height: 1.8;
+  background: rgba(201, 240, 78, 0.22); border-left: 3px solid var(--lime);
+}
+.question.wrong .explain { display: block; }
+.question .explain strong { margin-right: 4px; }
+.quiz select {
+  width: 100%; margin-bottom: 16px; padding: 12px 14px; font: inherit; font-size: 15px; color: var(--ink);
+  background: var(--white); border: 1px solid var(--line); border-radius: 2px;
+}
+.quiz select:focus-visible { border-color: var(--ink); }
+.verdict { display: none; margin-top: 20px; padding: 14px 18px; font-size: 15px; font-weight: 700; text-align: center; line-height: 1.7; }
+.verdict.ok { color: var(--ink); background: rgba(201, 240, 78, 0.28); border: 1px solid var(--ink); }
+.verdict.ng { color: #8f2f1f; background: rgba(240, 128, 104, 0.16); border: 1px solid var(--coral); }
 
 /* Result card */
 .result-card { position: relative; display: none; padding: 0 36px 32px; border-top: 0; box-shadow: var(--shadow); text-align: center; }

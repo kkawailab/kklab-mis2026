@@ -1,277 +1,318 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>出席確認 第14回 AIクイズ:最終発表：AI活用提案 | 経営情報 2026</title>
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <script>
-    // 確認コード計算(crypto.subtle)はHTTPSでのみ動作するため強制リダイレクト
-    if (location.protocol === "http:" && location.hostname !== "localhost") {
-      location.replace(location.href.replace(/^http:/, "https:"));
-    }
-  </script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-      background: #f5f6f8; color: #1f2933; min-height: 100vh; padding: 2rem 1rem; line-height: 1.6;
-    }
-    a { color: #2563eb; }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="経営情報 2026 第14回（11/21 1限）「最終発表：AI活用提案」の出席確認AIクイズ。全問正解で確認コード付きの出席カードが表示されます。" />
+    <meta name="theme-color" content="#102a2a" />
+    <meta name="robots" content="noindex" />
+    <title>出席確認 第14回 AIクイズ：最終発表：AI活用提案｜経営情報 2026</title>
+    <link rel="canonical" href="https://kklab.mobi/kklab-mis2026/attendance/attendance14.html" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20260829d" />
+    <link rel="stylesheet" href="../assets/css/pages.css?v=20260829b" />
+    <script src="../assets/js/main.js?v=20260828" defer></script>
+    <script>
+      // 確認コード計算（crypto.subtle）はHTTPSでのみ動作するため強制リダイレクト
+      if (location.protocol === "http:" && location.hostname !== "localhost") {
+        location.replace(location.href.replace(/^http:/, "https:"));
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
 
-    .container {
-      max-width: 640px; margin: 0 auto; background: #ffffff; border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); padding: 2rem;
-    }
-    .course { color: #52606d; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 0.3rem; }
-    h1 { font-size: 1.5rem; margin-bottom: 0.3rem; }
-    .theme { color: #2563eb; font-weight: 700; margin-bottom: 0.8rem; }
-    .lead { color: #52606d; font-size: 0.95rem; margin-bottom: 1.5rem; }
-    fieldset { border: none; margin-bottom: 1.5rem; }
-    label { display: block; font-weight: 700; margin-bottom: 0.4rem; }
-    input[type="text"] {
-      width: 100%; padding: 0.6rem 0.8rem; font-size: 1rem; border: 1px solid #cbd2d9;
-      border-radius: 8px; margin-bottom: 1rem;
-    }
-    .question {
-      background: #f5f6f8; border: 2px solid transparent; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;
-    }
-    .question.wrong { border-color: #fca5a5; background: #fff7f7; }
-    .question > p { font-weight: 700; margin-bottom: 0.6rem; }
-    .question .qno { display: inline-block; color: #2563eb; margin-right: 0.4rem; }
-    .question .choice { display: block; font-weight: 400; margin-bottom: 0.4rem; cursor: pointer; }
-    .question input[type="radio"] { margin-right: 0.5rem; }
-    .question .explain {
-      display: none; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
-      padding: 0.7rem 0.9rem; margin-top: 0.6rem; color: #92400e; font-size: 0.92rem;
-    }
-    .question.wrong .explain { display: block; }
-    button {
-      display: block; width: 100%; padding: 0.8rem; font-size: 1.05rem; font-weight: 700; color: #ffffff;
-      background: #2563eb; border: none; border-radius: 8px; cursor: pointer;
-    }
-    button:hover { background: #1d4ed8; }
-    button:disabled { background: #9aa5b1; cursor: not-allowed; }
-    .error {
-      display: none; background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; border-radius: 8px;
-      padding: 0.8rem 1rem; margin-bottom: 1rem; font-weight: 700;
-    }
-    #result { display: none; text-align: center; }
-    #result h2 { font-size: 1.4rem; color: #15803d; margin-bottom: 1.2rem; }
-    .result-table { margin: 0 auto 1.5rem; border-collapse: collapse; text-align: left; }
-    .result-table th, .result-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e4e7eb; }
-    .result-table th { color: #52606d; font-weight: 700; white-space: nowrap; }
-    .result-table .code { font-family: "SFMono-Regular", Menlo, Consolas, monospace; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.06em; }
-    .time-note { color: #52606d; font-size: 0.85rem; margin: -0.8rem 0 1.5rem; }
-    .notice {
-      background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem; font-weight: 700; color: #1e40af;
-    }
-    .links { margin-top: 1.5rem; font-size: 0.9rem; display: flex; gap: 1.2rem; flex-wrap: wrap; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div id="form-page">
-      <p class="course">経営情報 2026</p>
-      <h1>出席確認 第14回 AIクイズ</h1>
-      <p class="theme">最終発表：AI活用提案(<time datetime="2026-11-21">11/21</time> 1限)</p>
-      <p class="lead">学籍番号と氏名を入力し、5問すべてに回答して「提出する」を押してください。全問正解で出席カードが表示されます。</p>
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="../index.html" aria-label="経営情報 2026 トップへ">
+          <span class="brand-mark" aria-hidden="true">MI</span>
+          <span class="brand-copy">
+            <strong>経営情報</strong>
+            <small>Management Information 2026</small>
+          </span>
+        </a>
 
-      <div class="error" id="error-box"></div>
+        <button
+          class="menu-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-button
+        >
+          <span class="menu-button-lines" aria-hidden="true"></span>
+          <span class="sr-only">メニューを開く</span>
+        </button>
 
-      <fieldset>
-        <label for="student-id">学籍番号</label>
-        <input type="text" id="student-id" autocomplete="off" placeholder="例: 26123456">
+        <nav id="site-navigation" class="site-nav" aria-label="メインナビゲーション" data-navigation>
+          <a href="../index.html#overview">授業概要</a>
+          <a href="../index.html#news">お知らせ</a>
+          <a href="../index.html#schedule">講義予定</a>
+          <a href="../index.html#materials">資料・課題</a>
+          <a href="./" class="is-active">出席確認</a>
+          <a href="../programming/">プログラミング入門</a>
+          <a class="nav-contact" href="../index.html#contact">問い合わせ</a>
+        </nav>
+      </div>
+    </header>
 
-        <label for="student-name">氏名(フルネーム)</label>
-        <input type="text" id="student-name" autocomplete="off" placeholder="例: 山田 太郎">
-      </fieldset>
+    <main id="main-content">
+      <section id="top" class="page-hero lesson-hero" aria-labelledby="page-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="container page-hero-inner">
+          <div>
+            <ol class="breadcrumb" aria-label="現在位置">
+              <li><a href="../index.html">経営情報 2026</a></li>
+              <li><a href="./">出席確認</a></li>
+              <li><span aria-current="page">第14回</span></li>
+            </ol>
+            <p class="eyebrow"><span></span> Attendance — <b>第14回</b> / 15 · <time datetime="2026-11-21">11/21</time> 1限</p>
+            <h1 id="page-title">最終発表：AI活用提案</h1>
+          </div>
 
-      <fieldset>
-        <div class="question" id="q1">
-          <p><span class="qno">Q1.</span>AI活用提案で最初に明確にすべきことはどれでしょうか?</p>
-          <label class="choice"><input type="radio" name="q1" value="b">解決したい課題と目的</label>
-          <label class="choice"><input type="radio" name="q1" value="a">使うAIツールの名前</label>
-          <label class="choice"><input type="radio" name="q1" value="d">発表スライドの色</label>
-          <label class="choice"><input type="radio" name="q1" value="c">予算だけ</label>
-          <div class="explain"><strong>【解説】</strong>提案は「何のために」から始めます。課題と目的が明確でないと、AIを使うこと自体が目的化してしまいます。</div>
+          <aside class="hero-card" aria-label="この回の情報">
+            <div class="hero-card-head">
+              <span>Attendance — 出席確認</span>
+              <span class="status"><i aria-hidden="true"></i> Module 04</span>
+            </div>
+            <dl class="hero-facts">
+              <div>
+                <dt>講義回</dt>
+                <dd>第14回<br /><small>11/21 1限 ／ デジタル時代の経営</small></dd>
+              </div>
+              <div>
+                <dt>問題数</dt>
+                <dd>AIクイズ 5問<br /><small>全問正解で出席カードを表示</small></dd>
+              </div>
+              <div>
+                <dt>提出</dt>
+                <dd>出席カードのスクリーンショット<br /><small>Teams の Class Notebook へ</small></dd>
+              </div>
+            </dl>
+          </aside>
         </div>
-        <div class="question" id="q2">
-          <p><span class="qno">Q2.</span>提案の実現可能性を検討する際の観点として適切なものはどれでしょうか?</p>
-          <label class="choice"><input type="radio" name="q2" value="c">データの有無、コスト、組織の受け入れ、法規制</label>
-          <label class="choice"><input type="radio" name="q2" value="b">流行しているかどうかだけ</label>
-          <label class="choice"><input type="radio" name="q2" value="d">発表時間の長さ</label>
-          <label class="choice"><input type="radio" name="q2" value="a">見た目の派手さ</label>
-          <div class="explain"><strong>【解説】</strong>実現可能性は、必要なデータ、コスト、組織の受け入れ、法規制などの観点から検討します。</div>
+      </section>
+
+      <section class="section section-tight" aria-label="出席確認クイズ">
+        <div class="lesson-layout">
+          <div id="form-page">
+            <section class="quiz attendance" aria-labelledby="quiz-title">
+              <h2 id="quiz-title">第14回 AIクイズ</h2>
+              <p class="quiz-lead">学籍番号と氏名を入力し、5問すべてに回答して「提出する」を押してください。全問正解で出席カードが表示されます。</p>
+
+              <div class="error" id="error-box" role="alert"></div>
+
+              <fieldset>
+                <label for="student-id">学籍番号</label>
+                <input type="text" id="student-id" autocomplete="off" placeholder="例: 26123456" />
+
+                <label for="student-name">氏名（フルネーム）</label>
+                <input type="text" id="student-name" autocomplete="off" placeholder="例: 山田 太郎" />
+              </fieldset>
+
+              <fieldset>
+                <div class="question" id="q1">
+                          <p><span class="qno">Q1.</span>AI活用提案で最初に明確にすべきことはどれでしょうか?</p>
+                          <label class="choice"><input type="radio" name="q1" value="b">解決したい課題と目的</label>
+                          <label class="choice"><input type="radio" name="q1" value="a">使うAIツールの名前</label>
+                          <label class="choice"><input type="radio" name="q1" value="d">発表スライドの色</label>
+                          <label class="choice"><input type="radio" name="q1" value="c">予算だけ</label>
+                          <div class="explain"><strong>【解説】</strong>提案は「何のために」から始めます。課題と目的が明確でないと、AIを使うこと自体が目的化してしまいます。</div>
+                        </div>
+                        <div class="question" id="q2">
+                          <p><span class="qno">Q2.</span>提案の実現可能性を検討する際の観点として適切なものはどれでしょうか?</p>
+                          <label class="choice"><input type="radio" name="q2" value="c">データの有無、コスト、組織の受け入れ、法規制</label>
+                          <label class="choice"><input type="radio" name="q2" value="b">流行しているかどうかだけ</label>
+                          <label class="choice"><input type="radio" name="q2" value="d">発表時間の長さ</label>
+                          <label class="choice"><input type="radio" name="q2" value="a">見た目の派手さ</label>
+                          <div class="explain"><strong>【解説】</strong>実現可能性は、必要なデータ、コスト、組織の受け入れ、法規制などの観点から検討します。</div>
+                        </div>
+                        <div class="question" id="q3">
+                          <p><span class="qno">Q3.</span>提案の効果を示す方法として適切なものはどれでしょうか?</p>
+                          <label class="choice"><input type="radio" name="q3" value="c">導入前後で比較できる指標(KPI)を設定する</label>
+                          <label class="choice"><input type="radio" name="q3" value="b">効果は示さなくてよい</label>
+                          <label class="choice"><input type="radio" name="q3" value="a">感想だけを書く</label>
+                          <label class="choice"><input type="radio" name="q3" value="d">導入費用の高さで示す</label>
+                          <div class="explain"><strong>【解説】</strong>効果は、導入前後で比較できる具体的な指標(KPI)を設定して示します。</div>
+                        </div>
+                        <div class="question" id="q4">
+                          <p><span class="qno">Q4.</span>AIを使って作成した提案を発表するときの姿勢として適切なものはどれでしょうか?</p>
+                          <label class="choice"><input type="radio" name="q4" value="c">AIの寄与と自分の判断・検証を区別して示す</label>
+                          <label class="choice"><input type="radio" name="q4" value="d">AIを使ったことは隠す</label>
+                          <label class="choice"><input type="radio" name="q4" value="b">すべてAIの出力のまま提出する</label>
+                          <label class="choice"><input type="radio" name="q4" value="a">自分の判断は不要である</label>
+                          <div class="explain"><strong>【解説】</strong>本講義のAI Policyのとおり、AIがどこに寄与し、自分が何を判断・検証したかを区別して示します。</div>
+                        </div>
+                        <div class="question" id="q5">
+                          <p><span class="qno">Q5.</span>相互評価(ピアレビュー)の目的として適切なものはどれでしょうか?</p>
+                          <label class="choice"><input type="radio" name="q5" value="b">他者の視点で提案の強みと改善点を見つける</label>
+                          <label class="choice"><input type="radio" name="q5" value="a">順位を付けることだけ</label>
+                          <label class="choice"><input type="radio" name="q5" value="d">発表者を批判すること</label>
+                          <label class="choice"><input type="radio" name="q5" value="c">形式的に済ませること</label>
+                          <div class="explain"><strong>【解説】</strong>相互評価は、他者の視点から強みと改善点を見つけ、提案をよりよくするために行います。</div>
+                        </div>
+              </fieldset>
+
+              <button type="button" id="submit-btn" onclick="submitQuiz()">提出する <span aria-hidden="true">→</span></button>
+            </section>
+
+            <nav class="pager" aria-label="関連ページ">
+              <a class="prev" href="./">← 出席確認一覧に戻る</a>
+              <span></span>
+              <a class="next" href="../index.html">講義サイトのトップへ →</a>
+            </nav>
+          </div>
+
+          <div class="result-card" id="result">
+            <p class="resource-label">Attendance confirmed</p>
+            <h2>全問正解です！出席を確認しました</h2>
+            <table class="result-table">
+              <tr><th>科目</th><td>経営情報 2026</td></tr>
+              <tr><th>講義回</th><td>第14回(11/21 1限) 最終発表：AI活用提案</td></tr>
+              <tr><th>学籍番号</th><td id="result-id"></td></tr>
+              <tr><th>氏名</th><td id="result-name"></td></tr>
+              <tr><th>提出時間</th><td id="result-time"></td></tr>
+              <tr><th>確認コード</th><td class="code" id="result-code"></td></tr>
+            </table>
+            <p class="time-note">提出時間はサーバー時刻に基づきます。</p>
+            <p class="notice">この画面のスクリーンショットを撮り、Teams の Class Notebook に提出してください。</p>
+          </div>
         </div>
-        <div class="question" id="q3">
-          <p><span class="qno">Q3.</span>提案の効果を示す方法として適切なものはどれでしょうか?</p>
-          <label class="choice"><input type="radio" name="q3" value="c">導入前後で比較できる指標(KPI)を設定する</label>
-          <label class="choice"><input type="radio" name="q3" value="b">効果は示さなくてよい</label>
-          <label class="choice"><input type="radio" name="q3" value="a">感想だけを書く</label>
-          <label class="choice"><input type="radio" name="q3" value="d">導入費用の高さで示す</label>
-          <div class="explain"><strong>【解説】</strong>効果は、導入前後で比較できる具体的な指標(KPI)を設定して示します。</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark small" aria-hidden="true">MI</span>
+          <p><strong>経営情報 2026</strong><br /><span>担当教員：河合勝彦</span></p>
         </div>
-        <div class="question" id="q4">
-          <p><span class="qno">Q4.</span>AIを使って作成した提案を発表するときの姿勢として適切なものはどれでしょうか?</p>
-          <label class="choice"><input type="radio" name="q4" value="c">AIの寄与と自分の判断・検証を区別して示す</label>
-          <label class="choice"><input type="radio" name="q4" value="d">AIを使ったことは隠す</label>
-          <label class="choice"><input type="radio" name="q4" value="b">すべてAIの出力のまま提出する</label>
-          <label class="choice"><input type="radio" name="q4" value="a">自分の判断は不要である</label>
-          <div class="explain"><strong>【解説】</strong>本講義のAI Policyのとおり、AIがどこに寄与し、自分が何を判断・検証したかを区別して示します。</div>
+        <div class="footer-meta">
+          <a href="./">出席確認一覧</a>
+          <a href="../index.html">講義サイトのトップ</a>
+          <a href="#top">ページ上部へ <span aria-hidden="true">↑</span></a>
+          <small>© 2026 Katsuhiko Kawai</small>
         </div>
-        <div class="question" id="q5">
-          <p><span class="qno">Q5.</span>相互評価(ピアレビュー)の目的として適切なものはどれでしょうか?</p>
-          <label class="choice"><input type="radio" name="q5" value="b">他者の視点で提案の強みと改善点を見つける</label>
-          <label class="choice"><input type="radio" name="q5" value="a">順位を付けることだけ</label>
-          <label class="choice"><input type="radio" name="q5" value="d">発表者を批判すること</label>
-          <label class="choice"><input type="radio" name="q5" value="c">形式的に済ませること</label>
-          <div class="explain"><strong>【解説】</strong>相互評価は、他者の視点から強みと改善点を見つけ、提案をよりよくするために行います。</div>
-        </div>
-      </fieldset>
+      </div>
+    </footer>
 
-      <button type="button" id="submit-btn" onclick="submitQuiz()">提出する</button>
-    </div>
+    <script src="../code.js"></script>
+    <script>      var ANSWERS = { q1: "b", q2: "c", q3: "c", q4: "c", q5: "b" };
+      var PAGE_ID = "attendance14";
+      var QUESTION_COUNT = 5;
 
-    <div id="result">
-      <h2>全問正解です!出席を確認しました</h2>
-      <table class="result-table">
-        <tr><th>科目</th><td>経営情報 2026</td></tr>
-        <tr><th>講義回</th><td>第14回(11/21 1限) 最終発表：AI活用提案</td></tr>
-        <tr><th>学籍番号</th><td id="result-id"></td></tr>
-        <tr><th>氏名</th><td id="result-name"></td></tr>
-        <tr><th>提出時間</th><td id="result-time"></td></tr>
-        <tr><th>確認コード</th><td class="code" id="result-code"></td></tr>
-      </table>
-      <p class="time-note">提出時間はサーバー時刻に基づきます。</p>
-      <p class="notice">この画面のスクリーンショットを撮り、Teams の Class Notebook に提出してください。</p>
-    </div>
-
-    <div class="links">
-      <a href="index.html">← 出席確認一覧に戻る</a>
-      <a href="../index.html">講義サイトのトップへ</a>
-    </div>
-  </div>
-
-  <script src="../code.js"></script>
-  <script>
-    var ANSWERS = { q1: "b", q2: "c", q3: "c", q4: "c", q5: "b" };
-    var PAGE_ID = "attendance14";
-    var QUESTION_COUNT = 5;
-
-    // 選択肢の表示順をページ読み込みごとに入れ替える
-    (function shuffleChoices() {
-      var blocks = document.querySelectorAll(".question");
-      for (var b = 0; b < blocks.length; b++) {
-        var labels = Array.prototype.slice.call(blocks[b].querySelectorAll(".choice"));
-        var anchor = blocks[b].querySelector(".explain");
-        for (var i = labels.length - 1; i > 0; i--) {
-          var j = Math.floor(Math.random() * (i + 1));
-          var t = labels[i]; labels[i] = labels[j]; labels[j] = t;
+      // 選択肢の表示順をページ読み込みごとに入れ替える
+      (function shuffleChoices() {
+        var blocks = document.querySelectorAll(".question");
+        for (var b = 0; b < blocks.length; b++) {
+          var labels = Array.prototype.slice.call(blocks[b].querySelectorAll(".choice"));
+          var anchor = blocks[b].querySelector(".explain");
+          for (var i = labels.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = labels[i]; labels[i] = labels[j]; labels[j] = t;
+          }
+          for (var k = 0; k < labels.length; k++) blocks[b].insertBefore(labels[k], anchor);
         }
-        for (var k = 0; k < labels.length; k++) blocks[b].insertBefore(labels[k], anchor);
-      }
-    })();
+      })();
 
-    // 学籍番号・氏名は端末内に記憶(入力の手間を減らすため)
-    (function restoreStudent() {
-      try {
-        var id = localStorage.getItem("mis2026-student-id");
-        var name = localStorage.getItem("mis2026-student-name");
-        if (id) document.getElementById("student-id").value = id;
-        if (name) document.getElementById("student-name").value = name;
-      } catch (e) { /* 記憶できなくても動作に支障なし */ }
-    })();
+      // 学籍番号・氏名は端末内に記憶(入力の手間を減らすため)
+      (function restoreStudent() {
+        try {
+          var id = localStorage.getItem("mis2026-student-id");
+          var name = localStorage.getItem("mis2026-student-name");
+          if (id) document.getElementById("student-id").value = id;
+          if (name) document.getElementById("student-name").value = name;
+        } catch (e) { /* 記憶できなくても動作に支障なし */ }
+      })();
 
-    function getChecked(name) {
-      var checked = document.querySelector('input[name="' + name + '"]:checked');
-      return checked ? checked.value : null;
-    }
-
-    function showError(message) {
-      var box = document.getElementById("error-box");
-      box.textContent = message;
-      box.style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function hideError() {
-      document.getElementById("error-box").style.display = "none";
-    }
-
-    function clearQuestion(i) {
-      var radios = document.querySelectorAll('input[name="q' + i + '"]');
-      for (var r = 0; r < radios.length; r++) radios[r].checked = false;
-    }
-
-    function setSubmitting(busy) {
-      var btn = document.getElementById("submit-btn");
-      btn.disabled = busy;
-      btn.textContent = busy ? "提出処理中…" : "提出する";
-    }
-
-    async function submitQuiz() {
-      hideError();
-
-      var id = document.getElementById("student-id").value.trim();
-      var name = document.getElementById("student-name").value.trim();
-
-      if (!id || !name) {
-        showError("学籍番号と氏名を入力してください。");
-        return;
+      function getChecked(name) {
+        var checked = document.querySelector('input[name="' + name + '"]:checked');
+        return checked ? checked.value : null;
       }
 
-      var unanswered = [], wrong = [];
-      for (var i = 1; i <= QUESTION_COUNT; i++) {
-        var v = getChecked("q" + i);
-        var block = document.getElementById("q" + i);
-        block.classList.remove("wrong");
-        if (!v) unanswered.push(i);
-        else if (v !== ANSWERS["q" + i]) wrong.push(i);
+      function showError(message) {
+        var box = document.getElementById("error-box");
+        box.textContent = message;
+        box.style.display = "block";
+        box.scrollIntoView({ behavior: "smooth", block: "center" });
       }
 
-      if (unanswered.length) {
-        showError("Q" + unanswered.join("・Q") + " に回答してください。");
-        return;
+      function hideError() {
+        document.getElementById("error-box").style.display = "none";
       }
 
-      if (wrong.length) {
-        for (var w = 0; w < wrong.length; w++) {
-          document.getElementById("q" + wrong[w]).classList.add("wrong");
-          clearQuestion(wrong[w]);
+      function clearQuestion(i) {
+        var radios = document.querySelectorAll('input[name="q' + i + '"]');
+        for (var r = 0; r < radios.length; r++) radios[r].checked = false;
+      }
+
+      function setSubmitting(busy) {
+        var btn = document.getElementById("submit-btn");
+        btn.disabled = busy;
+        btn.textContent = busy ? "提出処理中…" : "提出する";
+      }
+
+      async function submitQuiz() {
+        hideError();
+
+        var id = document.getElementById("student-id").value.trim();
+        var name = document.getElementById("student-name").value.trim();
+
+        if (!id || !name) {
+          showError("学籍番号と氏名を入力してください。");
+          return;
         }
-        showError(wrong.length + "問が不正解です(Q" + wrong.join("・Q") + ")。解説を読んで、もう一度回答してください。");
-        return;
+
+        var unanswered = [], wrong = [];
+        for (var i = 1; i <= QUESTION_COUNT; i++) {
+          var v = getChecked("q" + i);
+          var block = document.getElementById("q" + i);
+          block.classList.remove("wrong");
+          if (!v) unanswered.push(i);
+          else if (v !== ANSWERS["q" + i]) wrong.push(i);
+        }
+
+        if (unanswered.length) {
+          showError("Q" + unanswered.join("・Q") + " に回答してください。");
+          return;
+        }
+
+        if (wrong.length) {
+          for (var w = 0; w < wrong.length; w++) {
+            document.getElementById("q" + wrong[w]).classList.add("wrong");
+            clearQuestion(wrong[w]);
+          }
+          showError(wrong.length + "問が不正解です(Q" + wrong.join("・Q") + ")。解説を読んで、もう一度回答してください。");
+          return;
+        }
+
+        if (!window.crypto || !crypto.subtle) {
+          showError("このページは https:// で開く必要があります。URLを確認してください。");
+          return;
+        }
+
+        try {
+          localStorage.setItem("mis2026-student-id", id);
+          localStorage.setItem("mis2026-student-name", name);
+        } catch (e) { /* 無視 */ }
+
+        setSubmitting(true);
+        var timeText = await fetchServerTime();
+        if (!timeText) {
+          setSubmitting(false);
+          showError("時刻サーバーに接続できませんでした。通信環境を確認して、もう一度「提出する」を押してください。");
+          return;
+        }
+
+        var code = await computeCode(PAGE_ID, id, name, timeText);
+
+        document.getElementById("result-id").textContent = id;
+        document.getElementById("result-name").textContent = name;
+        document.getElementById("result-time").textContent = timeText;
+        document.getElementById("result-code").textContent = code;
+        document.getElementById("form-page").style.display = "none";
+        document.getElementById("result").style.display = "block";
+        window.scrollTo(0, 0);
       }
-
-      if (!window.crypto || !crypto.subtle) {
-        showError("このページは https:// で開く必要があります。URLを確認してください。");
-        return;
-      }
-
-      try {
-        localStorage.setItem("mis2026-student-id", id);
-        localStorage.setItem("mis2026-student-name", name);
-      } catch (e) { /* 無視 */ }
-
-      setSubmitting(true);
-      var timeText = await fetchServerTime();
-      if (!timeText) {
-        setSubmitting(false);
-        showError("時刻サーバーに接続できませんでした。通信環境を確認して、もう一度「提出する」を押してください。");
-        return;
-      }
-
-      var code = await computeCode(PAGE_ID, id, name, timeText);
-
-      document.getElementById("result-id").textContent = id;
-      document.getElementById("result-name").textContent = name;
-      document.getElementById("result-time").textContent = timeText;
-      document.getElementById("result-code").textContent = code;
-      document.getElementById("form-page").style.display = "none";
-      document.getElementById("result").style.display = "block";
-      window.scrollTo(0, 0);
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
