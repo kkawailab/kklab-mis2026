@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>出席確認 第1回 AIクイズ:ガイダンス／AI時代の経営情報 | 経営情報 2026</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script>
+    // 確認コード計算(crypto.subtle)はHTTPSでのみ動作するため強制リダイレクト
+    if (location.protocol === "http:" && location.hostname !== "localhost") {
+      location.replace(location.href.replace(/^http:/, "https:"));
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      background: #f5f6f8; color: #1f2933; min-height: 100vh; padding: 2rem 1rem; line-height: 1.6;
+    }
+    a { color: #2563eb; }
+
+    .container {
+      max-width: 640px; margin: 0 auto; background: #ffffff; border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); padding: 2rem;
+    }
+    .course { color: #52606d; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.3rem; }
+    .theme { color: #2563eb; font-weight: 700; margin-bottom: 0.8rem; }
+    .lead { color: #52606d; font-size: 0.95rem; margin-bottom: 1.5rem; }
+    fieldset { border: none; margin-bottom: 1.5rem; }
+    label { display: block; font-weight: 700; margin-bottom: 0.4rem; }
+    input[type="text"] {
+      width: 100%; padding: 0.6rem 0.8rem; font-size: 1rem; border: 1px solid #cbd2d9;
+      border-radius: 8px; margin-bottom: 1rem;
+    }
+    .question {
+      background: #f5f6f8; border: 2px solid transparent; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;
+    }
+    .question.wrong { border-color: #fca5a5; background: #fff7f7; }
+    .question > p { font-weight: 700; margin-bottom: 0.6rem; }
+    .question .qno { display: inline-block; color: #2563eb; margin-right: 0.4rem; }
+    .question .choice { display: block; font-weight: 400; margin-bottom: 0.4rem; cursor: pointer; }
+    .question input[type="radio"] { margin-right: 0.5rem; }
+    .question .explain {
+      display: none; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
+      padding: 0.7rem 0.9rem; margin-top: 0.6rem; color: #92400e; font-size: 0.92rem;
+    }
+    .question.wrong .explain { display: block; }
+    button {
+      display: block; width: 100%; padding: 0.8rem; font-size: 1.05rem; font-weight: 700; color: #ffffff;
+      background: #2563eb; border: none; border-radius: 8px; cursor: pointer;
+    }
+    button:hover { background: #1d4ed8; }
+    button:disabled { background: #9aa5b1; cursor: not-allowed; }
+    .error {
+      display: none; background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; border-radius: 8px;
+      padding: 0.8rem 1rem; margin-bottom: 1rem; font-weight: 700;
+    }
+    #result { display: none; text-align: center; }
+    #result h2 { font-size: 1.4rem; color: #15803d; margin-bottom: 1.2rem; }
+    .result-table { margin: 0 auto 1.5rem; border-collapse: collapse; text-align: left; }
+    .result-table th, .result-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #e4e7eb; }
+    .result-table th { color: #52606d; font-weight: 700; white-space: nowrap; }
+    .result-table .code { font-family: "SFMono-Regular", Menlo, Consolas, monospace; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.06em; }
+    .time-note { color: #52606d; font-size: 0.85rem; margin: -0.8rem 0 1.5rem; }
+    .notice {
+      background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem; font-weight: 700; color: #1e40af;
+    }
+    .links { margin-top: 1.5rem; font-size: 0.9rem; display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="form-page">
+      <p class="course">経営情報 2026</p>
+      <h1>出席確認 第1回 AIクイズ</h1>
+      <p class="theme">ガイダンス／AI時代の経営情報(<time datetime="2026-10-03">10/3</time> 1限)</p>
+      <p class="lead">学籍番号と氏名を入力し、5問すべてに回答して「提出する」を押してください。全問正解で出席カードが表示されます。</p>
+
+      <div class="error" id="error-box"></div>
+
+      <fieldset>
+        <label for="student-id">学籍番号</label>
+        <input type="text" id="student-id" autocomplete="off" placeholder="例: 26123456">
+
+        <label for="student-name">氏名(フルネーム)</label>
+        <input type="text" id="student-name" autocomplete="off" placeholder="例: 山田 太郎">
+      </fieldset>
+
+      <fieldset>
+        <div class="question" id="q1">
+          <p><span class="qno">Q1.</span>「経営情報」という科目で扱う「情報」の位置づけとして最も適切なものはどれでしょうか?</p>
+          <label class="choice"><input type="radio" name="q1" value="b">ヒト・モノ・カネと並ぶ経営資源のひとつ</label>
+          <label class="choice"><input type="radio" name="q1" value="d">通信回線の速度のこと</label>
+          <label class="choice"><input type="radio" name="q1" value="c">会計帳簿の別名</label>
+          <label class="choice"><input type="radio" name="q1" value="a">社内メールの総称</label>
+          <div class="explain"><strong>【解説】</strong>情報は、ヒト・モノ・カネと並ぶ第4の経営資源として位置づけられます。</div>
+        </div>
+        <div class="question" id="q2">
+          <p><span class="qno">Q2.</span>生成AI(Generative AI)の説明として適切なものはどれでしょうか?</p>
+          <label class="choice"><input type="radio" name="q2" value="d">文章・画像・音声などの新しいコンテンツを生成するAI</label>
+          <label class="choice"><input type="radio" name="q2" value="b">与えられたデータを分類するだけのAI</label>
+          <label class="choice"><input type="radio" name="q2" value="a">家電を遠隔操作するための技術</label>
+          <label class="choice"><input type="radio" name="q2" value="c">コンピュータウイルスを検知するソフト</label>
+          <div class="explain"><strong>【解説】</strong>生成AIは、学習したパターンをもとに文章・画像・音声などの新しいコンテンツを生成するAIです。</div>
+        </div>
+        <div class="question" id="q3">
+          <p><span class="qno">Q3.</span>AIの出力を経営判断に使うときの基本姿勢として適切なものはどれでしょうか?</p>
+          <label class="choice"><input type="radio" name="q3" value="b">出力の根拠と限界を確認したうえで、人が判断する</label>
+          <label class="choice"><input type="radio" name="q3" value="a">AIの出力は常に正しいので、そのまま採用する</label>
+          <label class="choice"><input type="radio" name="q3" value="d">AIは使わないのがもっとも安全である</label>
+          <label class="choice"><input type="radio" name="q3" value="c">回答が長いほど信頼できると考える</label>
+          <div class="explain"><strong>【解説】</strong>AIの出力は誤りを含むことがあるため、根拠と限界を確認し、最終判断は人が行います。</div>
+        </div>
+        <div class="question" id="q4">
+          <p><span class="qno">Q4.</span>「AI」の正式名称はどれでしょうか?</p>
+          <label class="choice"><input type="radio" name="q4" value="a">Artificial Intelligence</label>
+          <label class="choice"><input type="radio" name="q4" value="b">Automatic Information</label>
+          <label class="choice"><input type="radio" name="q4" value="c">Advanced Internet</label>
+          <label class="choice"><input type="radio" name="q4" value="d">Analog Interface</label>
+          <div class="explain"><strong>【解説】</strong>AIは Artificial Intelligence(人工知能)の略です。</div>
+        </div>
+        <div class="question" id="q5">
+          <p><span class="qno">Q5.</span>本講義の「AI Policy(AIとの向き合い方)」として掲げられて<u>いない</u>ものはどれでしょうか?</p>
+          <label class="choice"><input type="radio" name="q5" value="c">AIの利用を隠す</label>
+          <label class="choice"><input type="radio" name="q5" value="b">毎回の演習でAIを実際に使う</label>
+          <label class="choice"><input type="radio" name="q5" value="d">出力を検証してから採用する</label>
+          <label class="choice"><input type="radio" name="q5" value="a">AIの寄与と自分の判断を区別して示す</label>
+          <div class="explain"><strong>【解説】</strong>本講義のAI Policyは「使う・検証する・区別する」の3つです。AIの利用を隠すのではなく、明示します。</div>
+        </div>
+      </fieldset>
+
+      <button type="button" id="submit-btn" onclick="submitQuiz()">提出する</button>
+    </div>
+
+    <div id="result">
+      <h2>全問正解です!出席を確認しました</h2>
+      <table class="result-table">
+        <tr><th>科目</th><td>経営情報 2026</td></tr>
+        <tr><th>講義回</th><td>第1回(10/3 1限) ガイダンス／AI時代の経営情報</td></tr>
+        <tr><th>学籍番号</th><td id="result-id"></td></tr>
+        <tr><th>氏名</th><td id="result-name"></td></tr>
+        <tr><th>提出時間</th><td id="result-time"></td></tr>
+        <tr><th>確認コード</th><td class="code" id="result-code"></td></tr>
+      </table>
+      <p class="time-note">提出時間はサーバー時刻に基づきます。</p>
+      <p class="notice">この画面のスクリーンショットを撮り、Teams の Class Notebook に提出してください。</p>
+    </div>
+
+    <div class="links">
+      <a href="index.html">← 出席確認一覧に戻る</a>
+      <a href="../index.html">講義サイトのトップへ</a>
+    </div>
+  </div>
+
+  <script src="../code.js"></script>
+  <script>
+    var ANSWERS = { q1: "b", q2: "d", q3: "b", q4: "a", q5: "c" };
+    var PAGE_ID = "attendance01";
+    var QUESTION_COUNT = 5;
+
+    // 選択肢の表示順をページ読み込みごとに入れ替える
+    (function shuffleChoices() {
+      var blocks = document.querySelectorAll(".question");
+      for (var b = 0; b < blocks.length; b++) {
+        var labels = Array.prototype.slice.call(blocks[b].querySelectorAll(".choice"));
+        var anchor = blocks[b].querySelector(".explain");
+        for (var i = labels.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = labels[i]; labels[i] = labels[j]; labels[j] = t;
+        }
+        for (var k = 0; k < labels.length; k++) blocks[b].insertBefore(labels[k], anchor);
+      }
+    })();
+
+    // 学籍番号・氏名は端末内に記憶(入力の手間を減らすため)
+    (function restoreStudent() {
+      try {
+        var id = localStorage.getItem("mis2026-student-id");
+        var name = localStorage.getItem("mis2026-student-name");
+        if (id) document.getElementById("student-id").value = id;
+        if (name) document.getElementById("student-name").value = name;
+      } catch (e) { /* 記憶できなくても動作に支障なし */ }
+    })();
+
+    function getChecked(name) {
+      var checked = document.querySelector('input[name="' + name + '"]:checked');
+      return checked ? checked.value : null;
+    }
+
+    function showError(message) {
+      var box = document.getElementById("error-box");
+      box.textContent = message;
+      box.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function hideError() {
+      document.getElementById("error-box").style.display = "none";
+    }
+
+    function clearQuestion(i) {
+      var radios = document.querySelectorAll('input[name="q' + i + '"]');
+      for (var r = 0; r < radios.length; r++) radios[r].checked = false;
+    }
+
+    function setSubmitting(busy) {
+      var btn = document.getElementById("submit-btn");
+      btn.disabled = busy;
+      btn.textContent = busy ? "提出処理中…" : "提出する";
+    }
+
+    async function submitQuiz() {
+      hideError();
+
+      var id = document.getElementById("student-id").value.trim();
+      var name = document.getElementById("student-name").value.trim();
+
+      if (!id || !name) {
+        showError("学籍番号と氏名を入力してください。");
+        return;
+      }
+
+      var unanswered = [], wrong = [];
+      for (var i = 1; i <= QUESTION_COUNT; i++) {
+        var v = getChecked("q" + i);
+        var block = document.getElementById("q" + i);
+        block.classList.remove("wrong");
+        if (!v) unanswered.push(i);
+        else if (v !== ANSWERS["q" + i]) wrong.push(i);
+      }
+
+      if (unanswered.length) {
+        showError("Q" + unanswered.join("・Q") + " に回答してください。");
+        return;
+      }
+
+      if (wrong.length) {
+        for (var w = 0; w < wrong.length; w++) {
+          document.getElementById("q" + wrong[w]).classList.add("wrong");
+          clearQuestion(wrong[w]);
+        }
+        showError(wrong.length + "問が不正解です(Q" + wrong.join("・Q") + ")。解説を読んで、もう一度回答してください。");
+        return;
+      }
+
+      if (!window.crypto || !crypto.subtle) {
+        showError("このページは https:// で開く必要があります。URLを確認してください。");
+        return;
+      }
+
+      try {
+        localStorage.setItem("mis2026-student-id", id);
+        localStorage.setItem("mis2026-student-name", name);
+      } catch (e) { /* 無視 */ }
+
+      setSubmitting(true);
+      var timeText = await fetchServerTime();
+      if (!timeText) {
+        setSubmitting(false);
+        showError("時刻サーバーに接続できませんでした。通信環境を確認して、もう一度「提出する」を押してください。");
+        return;
+      }
+
+      var code = await computeCode(PAGE_ID, id, name, timeText);
+
+      document.getElementById("result-id").textContent = id;
+      document.getElementById("result-name").textContent = name;
+      document.getElementById("result-time").textContent = timeText;
+      document.getElementById("result-code").textContent = code;
+      document.getElementById("form-page").style.display = "none";
+      document.getElementById("result").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
