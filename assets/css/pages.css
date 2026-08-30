@@ -105,13 +105,15 @@
   margin-top: auto; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
   border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
 }
-.link-card-meta .open { color: var(--ink); }
+.link-card-meta .open { color: var(--ink); white-space: nowrap; }
 .link-card-meta .open::after { content: " ↗"; }
 .repo-link {
   position: relative; z-index: 1; padding: 4px 11px; border: 1px solid var(--line); border-radius: 100px;
   font-size: 10px; letter-spacing: 0.08em; text-transform: none; transition: background-color 160ms ease, color 160ms ease;
 }
 .repo-link:hover, .repo-link:focus-visible { color: var(--white); background: var(--ink); border-color: var(--ink); }
+.repo-link.guide { color: var(--ink); background: var(--lime); border-color: var(--lime); font-weight: 800; }
+.link-card-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
 .link-group + .link-group { margin-top: 48px; }
 .group-title {
   margin: 0 0 18px; display: flex; align-items: center; gap: 16px;
