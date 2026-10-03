@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------
-   Sub pages: プログラミング入門 / プログラミング入門30日 / 出席確認 / 検証
+   Sub pages: プログラミング入門 / プログラミング入門30日 / 出席確認 / 検証 / AI利用ガイド
    style.css のトークン・ヘッダー・フッターを前提に、下層ページ専用の
    コンポーネントを追加する。
    ------------------------------------------------------------------ */
@@ -308,6 +308,79 @@ details.answer[open] summary::before { content: "−"; }
   background: rgba(201, 240, 78, 0.2); border: 1px solid rgba(16, 42, 42, 0.2);
 }
 
+/* Guide (AI利用ガイド) --------------------------------------------- */
+.guide-layout {
+  display: grid; grid-template-columns: minmax(200px, 250px) minmax(0, 840px);
+  gap: clamp(40px, 6vw, 84px); justify-content: space-between; align-items: start;
+}
+.guide-toc { position: sticky; top: 104px; }
+.guide-toc ol { margin: 0; padding: 0; list-style: none; counter-reset: toc; border-top: 1px solid var(--ink); }
+.guide-toc a {
+  display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: baseline; padding: 12px 6px;
+  border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 700; line-height: 1.6;
+  transition: background-color 160ms ease;
+}
+.guide-toc a::before {
+  counter-increment: toc; content: counter(toc, decimal-leading-zero);
+  color: var(--coral); font-family: var(--serif); font-size: 13px; font-weight: 500;
+}
+.guide-toc a:hover, .guide-toc a:focus-visible { background: rgba(201, 240, 78, 0.16); }
+.guide-body h2::before { content: attr(data-label); color: var(--ink-soft); }
+.guide-body h3 {
+  --accent: var(--lime);
+  margin: 30px 0 12px; display: flex; align-items: center; gap: 10px;
+  font-size: 16px; font-weight: 700; letter-spacing: 0.04em; line-height: 1.5;
+}
+.guide-body h3::before {
+  content: ""; flex: none; width: 10px; aspect-ratio: 1;
+  background: var(--accent); border: 1px solid var(--ink); border-radius: 50%;
+}
+.guide-body h2 + h3 { margin-top: 22px; }
+.guide-body h4 { margin: 0 0 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.06em; line-height: 1.6; }
+.guide-body ul, .guide-body ol { margin: 0 0 16px; padding-left: 1.4em; font-size: 15px; line-height: 1.9; }
+.guide-body li + li { margin-top: 6px; }
+.guide-body li::marker { color: var(--ink-soft); }
+.guide-body section > :last-child, .guide-body .callout > :last-child, .guide-body .template > :last-child { margin-bottom: 0; }
+.guide-body blockquote {
+  margin: 0 0 16px; padding: 16px 20px; background: var(--paper); border-left: 3px solid var(--ink);
+}
+.guide-body blockquote p { font-family: var(--serif); font-size: 15.5px; line-height: 1.9; }
+
+/* 4つの原則 */
+.guide-body .principles { padding: 0; list-style: none; counter-reset: principle; border-top: 1px solid var(--ink); }
+.guide-body .principles li {
+  margin: 0; padding: 18px 0; display: grid; grid-template-columns: 44px 1fr; gap: 2px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.guide-body .principles li::before {
+  counter-increment: principle; content: counter(principle, decimal-leading-zero);
+  grid-row: 1 / span 2; color: var(--coral); font-family: var(--serif); font-size: 18px; line-height: 1.6;
+}
+.guide-body .principles b { font-size: 16px; letter-spacing: 0.03em; line-height: 1.7; }
+.guide-body .principles span { color: var(--ink-soft); font-size: 14px; line-height: 1.85; }
+
+/* チェックリスト・テンプレート */
+.guide-body .callout { padding: 20px 22px; background: rgba(201, 240, 78, 0.16); border-left: 3px solid var(--lime); }
+.guide-body .checklist { padding: 0; list-style: none; font-size: 14.5px; }
+.guide-body .checklist li { position: relative; padding-left: 28px; }
+.guide-body .checklist li::before {
+  content: ""; position: absolute; left: 0; top: 0.5em; width: 14px; aspect-ratio: 1;
+  background: var(--white); border: 1.5px solid var(--ink); border-radius: 2px;
+}
+.guide-body .template { margin: 0 0 16px; padding: 20px 22px 8px; background: var(--paper); border: 1px solid var(--line); }
+.guide-body .fields { padding: 0; list-style: none; counter-reset: field; border-top: 1px solid var(--line); }
+.guide-body .fields li {
+  margin: 0; padding: 12px 0; display: grid; grid-template-columns: 148px 1fr; gap: 4px 20px; align-items: baseline;
+  border-bottom: 1px solid var(--line);
+}
+.guide-body .fields li:last-child { border-bottom: 0; }
+.guide-body .fields b { font-size: 13.5px; letter-spacing: 0.03em; }
+.guide-body ol.fields b::before {
+  counter-increment: field; content: counter(field); margin-right: 8px;
+  color: var(--coral); font-family: var(--serif); font-size: 15px; font-weight: 500;
+}
+.guide-body .fields span { font-size: 14px; line-height: 1.85; }
+
 /* Pager */
 .pager { margin-top: 32px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; font-size: 13px; font-weight: 700; }
 .pager a { padding-bottom: 2px; border-bottom: 1px solid var(--line); transition: border-color 160ms ease, color 160ms ease; }
@@ -332,6 +405,9 @@ details.answer[open] summary::before { content: "−"; }
   .tips { grid-template-columns: 1fr; }
   .phase-head { grid-template-columns: 1fr; gap: 10px; }
   .phase-range { text-align: left; padding-top: 0; }
+  .guide-layout { grid-template-columns: minmax(0, 840px); justify-content: center; gap: 36px; }
+  .guide-toc { position: static; }
+  .guide-toc ol { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 28px; }
 }
 
 @media (max-width: 680px) {
@@ -349,6 +425,10 @@ details.answer[open] summary::before { content: "−"; }
   .day-row > div { grid-column: 1 / -1; }
   .lesson-layout { width: min(calc(100% - 32px), 860px); }
   .lesson-body section, .quiz { padding: 24px 20px; }
+  .guide-toc ol { grid-template-columns: 1fr; }
+  .guide-body .principles li { grid-template-columns: 34px 1fr; }
+  .guide-body .callout, .guide-body .template { padding-inline: 16px; }
+  .guide-body .fields li { grid-template-columns: 1fr; }
   .result-card { padding-inline: 20px; }
   .result-table th, .result-table td { display: block; padding: 6px 0; border-bottom: 0; }
   .result-table th { padding-top: 10px; }

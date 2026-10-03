@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="経営情報 2026（担当教員：河合勝彦）での生成AI（大学が提供するCopilot）の使い方。基本の考え方、してよいこと・気をつけること、ハルシネーションへの備え、AI活用記録の書き方、プロンプトの基本。"
+    />
+    <meta name="theme-color" content="#102a2a" />
+    <meta property="og:title" content="AI利用ガイド｜経営情報 2026" />
+    <meta
+      property="og:description"
+      content="この授業での生成AI（大学が提供するCopilot）の使い方。基本の考え方、してよいこと・気をつけること、ハルシネーションへの備え、AI活用記録の書き方、プロンプトの基本。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kklab.mobi/kklab-mis2026/ai-guide/" />
+    <title>AI利用ガイド｜経営情報 2026</title>
+    <link rel="canonical" href="https://kklab.mobi/kklab-mis2026/ai-guide/" />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/css/style.css?v=20261003" />
+    <link rel="stylesheet" href="../assets/css/pages.css?v=20261003" />
+    <script src="../assets/js/main.js?v=20260828" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="../index.html" aria-label="経営情報 2026 トップへ">
+          <span class="brand-mark" aria-hidden="true">MI</span>
+          <span class="brand-copy">
+            <strong>経営情報</strong>
+            <small>Management Information 2026</small>
+          </span>
+        </a>
+
+        <button
+          class="menu-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+          data-menu-button
+        >
+          <span class="menu-button-lines" aria-hidden="true"></span>
+          <span class="sr-only">メニューを開く</span>
+        </button>
+
+        <nav id="site-navigation" class="site-nav" aria-label="メインナビゲーション" data-navigation>
+          <a href="../index.html#overview">授業概要</a>
+          <a href="../index.html#news">お知らせ</a>
+          <a href="../index.html#schedule">講義予定</a>
+          <a href="../index.html#materials">資料・課題</a>
+          <a href="./" class="is-active" aria-current="page">AI利用ガイド</a>
+          <a href="../attendance/">出席確認</a>
+          <a href="../programming/">プログラミング入門</a>
+          <a class="nav-contact" href="../index.html#contact">問い合わせ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="top" class="page-hero" aria-labelledby="page-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="container page-hero-inner">
+          <div>
+            <ol class="breadcrumb" aria-label="現在位置">
+              <li><a href="../index.html">経営情報 2026</a></li>
+              <li><span aria-current="page">AI利用ガイド</span></li>
+            </ol>
+            <p class="eyebrow"><span></span> AI Guide — 生成AIの使い方</p>
+            <h1 id="page-title">AI利用<em>ガイド</em></h1>
+            <p class="page-lead keep-all">
+              この授業での生成AIの使い方。<br />AIは「思考のパートナー」であり、代筆者ではありません。
+            </p>
+            <div class="page-actions">
+              <a class="button button-primary" href="#principles">
+                基本の考え方を読む
+                <span aria-hidden="true">↘</span>
+              </a>
+              <a class="text-link" href="#record">AI活用記録の書き方 <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="ガイドの要点">
+            <div class="hero-card-head">
+              <span>Guide at a glance</span>
+              <span class="status"><i aria-hidden="true"></i> 受講生向け</span>
+            </div>
+            <dl class="hero-facts">
+              <div>
+                <dt>使うAI</dt>
+                <dd>大学が提供する Copilot<br /><small>大学のアカウントでサインイン</small></dd>
+              </div>
+              <div>
+                <dt>位置づけ</dt>
+                <dd>思考のパートナー<br /><small>代筆者ではありません</small></dd>
+              </div>
+              <div>
+                <dt>検証</dt>
+                <dd>事実は一次資料で確認<br /><small>数値・固有名詞・文献情報</small></dd>
+              </div>
+              <div>
+                <dt>記録</dt>
+                <dd>AI活用記録を提出物に添付<br /><small>使っていない場合は「使用なし」</small></dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section-tight" aria-label="AI利用ガイド本文">
+        <div class="container guide-layout">
+          <nav class="guide-toc" aria-label="このページの内容">
+            <p class="section-number">Contents</p>
+            <ol>
+              <li><a href="#tool">使うAI</a></li>
+              <li><a href="#principles">基本の考え方</a></li>
+              <li><a href="#dos-and-donts">してよいこと、気をつけること、しないこと</a></li>
+              <li><a href="#hallucination">ハルシネーションへの備え</a></li>
+              <li><a href="#record">AI活用記録の書き方</a></li>
+              <li><a href="#prompt">プロンプトの基本</a></li>
+              <li><a href="#help">困ったとき</a></li>
+            </ol>
+          </nav>
+
+          <div class="lesson-body guide-body">
+            <section id="tool" aria-labelledby="tool-title">
+              <h2 id="tool-title" data-label="01 — Tool">使うAI</h2>
+              <p>授業内の演習と提出物では、<strong>大学が提供する Copilot</strong> を使います。大学のアカウントでサインインしてください。大学のAI利用規程が、このページの内容より優先します。</p>
+            </section>
+
+            <section id="principles" aria-labelledby="principles-title">
+              <h2 id="principles-title" data-label="02 — Principles">基本の考え方</h2>
+              <p>この授業が重視するのは、単にAIに代筆させることではなく、AIとの対話を通じて「問い」を深め、論理的な構成を構築し、批判的に出力を吟味するプロセスです。次の4つを守ってください。</p>
+              <ol class="principles">
+                <li><b>問いは自分が持つ。</b><span>テーマを決め、何を知りたいのかを言葉にするのは自分の仕事です。AIは視点を広げる相手として使います。</span></li>
+                <li><b>出力は素材であって完成品ではない。</b><span>AIの出力をそのまま提出物に貼ることはしません。読み、検証し、自分の言葉で書き直します。</span></li>
+                <li><b>事実は一次資料で確かめる。</b><span>数値、固有名詞、文献情報は、必ず元の資料（論文、統計、公式サイト）で確認します。</span></li>
+                <li><b>使ったことを隠さない。</b><span>どこでどうAIを使ったかを記録し、提出物に明記します。AI活用の透明性は評価の対象です。</span></li>
+              </ol>
+            </section>
+
+            <section id="dos-and-donts" aria-labelledby="dos-and-donts-title">
+              <h2 id="dos-and-donts-title" data-label="03 — Do &amp; Don't">してよいこと、気をつけること、しないこと</h2>
+
+              <h3 id="can-do">してよいこと</h3>
+              <ul>
+                <li>テーマから問いの候補を出す（ブレスト）</li>
+                <li>検索キーワードや関連分野の候補を挙げてもらう</li>
+                <li>難しい文章の要約や言い換えを頼み、原文を読む手がかりにする</li>
+                <li>自分の主張に対する反論や弱点を挙げてもらう</li>
+                <li>構成案（アウトライン）を一緒に作る</li>
+                <li>自分が書いた文章の誤字、表現、論理の飛躍を指摘してもらう</li>
+                <li>企画やコンセプトの発想、ペルソナ設定、行動のシミュレーションなど、発想を広げる作業</li>
+              </ul>
+
+              <h3 id="caution" style="--accent: var(--gold)">気をつけること</h3>
+              <ul>
+                <li><strong>文献情報。</strong> AIが挙げた論文や書籍は、実在しないことがあります。CiNii Research、Google Scholar、J-STAGE、図書館の蔵書検索などで必ず実在と内容を確認し、確認できないものは使いません。</li>
+                <li><strong>数値と統計。</strong> 出典を確認し、確認できない数値は使いません。</li>
+                <li><strong>個人情報と非公開情報。</strong> 他人の個人情報や、企業などの非公開の資料・データは入力しません。AIツールへ入力する際の注意は第8回で扱います。</li>
+                <li><strong>著作権。</strong> 論文や書籍の全文を入力する場合は、大学のAI利用規程と、その資料の利用条件を確認します。生成された画像やコピーは、既存の作品や商標に似ていないか確認します。</li>
+              </ul>
+
+              <h3 id="do-not" style="--accent: var(--coral)">しないこと</h3>
+              <ul>
+                <li>AIの出力をそのまま、あるいは表現だけ変えて提出物にする</li>
+                <li>実在を確認していない文献を引用する</li>
+                <li>AIを使った箇所を隠す、または記録しない</li>
+              </ul>
+            </section>
+
+            <section id="hallucination" aria-labelledby="hallucination-title">
+              <h2 id="hallucination-title" data-label="04 — Hallucination">ハルシネーションへの備え</h2>
+              <p>生成AIは、もっともらしいが誤った内容（ハルシネーション）を、自信のある口調で出力することがあります。第1回のAI演習では、AIの回答をどこまで信じてよいかを実際に検討し、第3回でそのしくみと限界を扱います。出力を使う前に、次を確認してください。</p>
+              <div class="callout">
+                <h4>出力を使う前のチェック</h4>
+                <ul class="checklist">
+                  <li>固有名詞（人名、組織名、書名、論文名）は実在するか</li>
+                  <li>数値には出典があるか。出典にあたって同じ数値か</li>
+                  <li>「〜と言われている」「一般に」など、根拠のない断定になっていないか</li>
+                  <li>反対の見解や例外はないか。「この主張に反する証拠は」と聞いたか</li>
+                  <li>自分で説明できるか。説明できない内容は使わない</li>
+                </ul>
+              </div>
+            </section>
+
+            <section id="record" aria-labelledby="record-title">
+              <h2 id="record-title" data-label="05 — Record">AI活用記録の書き方</h2>
+              <p>提出物には、次の形式で「AI活用記録」を添えてください。評価基準の「AI活用の透明性」はここで確認します。長くなくてかまいません。使っていない場合は「使用なし」と書きます。</p>
+              <div class="template">
+                <h4>AI活用記録（提出物に添付）</h4>
+                <ul class="fields">
+                  <li><b>使用したツール</b><span>Copilot（大学提供）</span></li>
+                  <li><b>使用した場面</b><span>例：問いの候補出し、検索キーワードの検討、要約、反論の生成、表現の推敲</span></li>
+                  <li><b>主なプロンプト</b><span>実際に使った指示を1〜3個。長い場合は要点でよい</span></li>
+                  <li><b>出力をどう扱ったか</b><span>採用した点、修正した点、採用しなかった点とその理由</span></li>
+                  <li><b>検証したこと</b><span>事実、文献、数値を、何で確認したか</span></li>
+                </ul>
+              </div>
+
+              <h3 id="disclosure">レポート本文でのAI利用の明記</h3>
+              <p>本文の冒頭または末尾に、次のような一文を入れます。</p>
+              <blockquote>
+                <p>本レポートの作成にあたり、問いの候補出しと構成案の検討に大学が提供する Copilot を使用した。出力はすべて筆者が一次資料に基づいて検証し、文章は筆者自身が執筆した。</p>
+              </blockquote>
+              <p>AIの出力そのものを引用する必要がある場合は、「Copilot に『〜』と入力した際の出力（2026年10月7日）」のように、プロンプトと日付がわかる形で示します。</p>
+            </section>
+
+            <section id="prompt" aria-labelledby="prompt-title">
+              <h2 id="prompt-title" data-label="06 — Prompt">プロンプトの基本</h2>
+              <p>AIとの対話の質は、指示の質で決まります。この授業では次の4つの要素を意識します。</p>
+              <div class="template">
+                <h4>プロンプトの4要素</h4>
+                <ol class="fields">
+                  <li><b>役割</b><span>AIに立ってほしい立場。「あなたは経営学を専門とする大学教員です」「あなたは厳しい査読者です」</span></li>
+                  <li><b>目的と背景</b><span>何のために、どんな状況で必要か。「経営情報の授業で、企業へのAI活用提案を作っています」</span></li>
+                  <li><b>条件</b><span>範囲、制約、避けてほしいこと。「日本国内の事例に限る」「文献名は挙げないでください」</span></li>
+                  <li><b>出力の形式</b><span>箇条書き、表、文字数、案の数。「300字以内」「10案を表で」</span></li>
+                </ol>
+              </div>
+
+              <h3 id="dialogue">対話を深めるコツ</h3>
+              <ul>
+                <li>一度で終わらせず、出力に対して「なぜ」「他には」「反対の立場だと」と続ける</li>
+                <li>良い出力があっても、「この案の弱点は」と聞いてから採用する</li>
+                <li>出力が抽象的なときは、具体例、数値、条件を追加して聞き直す</li>
+                <li>自分の考えを先に書いてから、AIに批評させる。AIの案に引きずられない</li>
+              </ul>
+              <p>各回のAI演習の内容は、<a href="../index.html#schedule">講義予定</a>に載せています。</p>
+            </section>
+
+            <section id="help" aria-labelledby="help-title">
+              <h2 id="help-title" data-label="07 — Help">困ったとき</h2>
+              <ul>
+                <li>Copilot にサインインできない、動作がおかしいときは、授業中に担当教員に知らせてください。</li>
+                <li>AIの利用について判断に迷うときは、使う前に相談してください。使った場合は、必ず記録に書いてください。</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="back-band" aria-label="講義サイトへ戻る">
+        <div class="container">
+          <p>講義予定・出席確認は講義サイトのトップから。</p>
+          <a class="button button-primary" href="../index.html">講義サイトのトップへ <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark small" aria-hidden="true">MI</span>
+          <p><strong>経営情報 2026</strong><br /><span>担当教員：河合勝彦</span></p>
+        </div>
+        <div class="footer-meta">
+          <a href="../index.html">講義サイトのトップ</a>
+          <a href="#top">ページ上部へ <span aria-hidden="true">↑</span></a>
+          <small>© 2026 Katsuhiko Kawai</small>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
