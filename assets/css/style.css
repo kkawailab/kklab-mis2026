@@ -360,8 +360,17 @@ button { font: inherit; }
 .contact-copy { padding-left: 40px; border-left: 1px solid rgba(255,255,255,.42); }
 .contact-copy p { margin: 0; font-family: var(--serif); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.65; }
 .contact-copy .contact-note { margin-top: 20px; color: rgba(255,255,255,.74); font-family: var(--sans); font-size: 11px; }
-.contact-note a { color: var(--white); font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.6); }
-.contact-note a:hover, .contact-note a:focus-visible { color: var(--ink); border-bottom-color: var(--ink); }
+.contact-link {
+  display: inline-flex; align-items: center; gap: 12px; padding: 7px 20px 7px 7px; color: var(--ink); background: var(--white);
+  border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: .04em; line-height: 1.4;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+.contact-link:hover, .contact-link:focus-visible { color: var(--white); background: var(--ink); transform: translateY(-2px); }
+.contact-link-icon { display: grid; place-items: center; width: 40px; aspect-ratio: 1; color: var(--ink); background: var(--lime); border-radius: 50%; }
+.contact-link-icon svg {
+  width: 20px; fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
 .site-footer { padding: 50px 0; color: var(--white); background: #0b2020; }
 .footer-inner, .footer-brand, .footer-meta { display: flex; align-items: center; }
 .footer-inner { justify-content: space-between; gap: 40px; }
