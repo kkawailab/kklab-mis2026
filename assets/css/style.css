@@ -316,6 +316,7 @@ button { font: inherit; }
 }
 .resource-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .resource-link { border-top-color: var(--lime); }
+.resource-link > div:not(.resource-icon) { margin-bottom: 24px; }
 .resource-link:hover, .resource-link:focus-visible { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(16,42,42,.12); }
 .resource-cta {
   margin-top: auto; width: fit-content; padding: 6px 14px; color: var(--ink); background: var(--lime);
