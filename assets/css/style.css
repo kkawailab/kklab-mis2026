@@ -360,6 +360,8 @@ button { font: inherit; }
 .contact-copy { padding-left: 40px; border-left: 1px solid rgba(255,255,255,.42); }
 .contact-copy p { margin: 0; font-family: var(--serif); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.65; }
 .contact-copy .contact-note { margin-top: 20px; color: rgba(255,255,255,.74); font-family: var(--sans); font-size: 11px; }
+.contact-note a { color: var(--white); font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.6); }
+.contact-note a:hover, .contact-note a:focus-visible { color: var(--ink); border-bottom-color: var(--ink); }
 .site-footer { padding: 50px 0; color: var(--white); background: #0b2020; }
 .footer-inner, .footer-brand, .footer-meta { display: flex; align-items: center; }
 .footer-inner { justify-content: space-between; gap: 40px; }
