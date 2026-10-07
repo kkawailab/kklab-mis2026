@@ -1,0 +1,74 @@
+% 復習3　先行研究の探し方（記入例）
+\session{3}{1}{90分}{先行研究の探し方}{AI検索の活用}{}
+
+\goals{
+  \item AIを使って関連分野と検索キーワード（日本語と英語）を広げられる
+  \item 学術データベースや公的統計で文献を探し、実在と内容を確認できる
+  \item 文献リストに必要な情報（著者、発行年、題名、掲載誌または出版社、巻号と頁、DOIまたはURL）を揃えられる
+}
+
+\afillin{自分のリサーチ・クエスチョン}{愛知県の中小企業では、なぜ生成AIの業務利用が進まないのか}
+
+\work[60mm]{ワーク1}{探す場所の見当をつける}
+\begin{promptbox}[探す場所の見当をつける]
+次のリサーチ・クエスチョンに関連する学術分野と、文献検索に使うキーワードを日本語と英語でそれぞれ10個ずつ挙げてください。文献名や著者名は挙げないでください。問い：（あなたの問い）
+\end{promptbox}
+\afillin{関連する学術分野}{経営情報論、イノベーションの普及論、中小企業論、組織論}
+\begin{wstabh}{colspec={X[l,m] X[l,m] X[l,m] X[l,m]},row{2-Z}={ht=8mm}}
+  日本語キーワード & 英語キーワード & 日本語キーワード & 英語キーワード \\
+  \af{生成AI} & \af{generative AI} & \af{技術受容} & \af{technology acceptance} \\
+  \af{中小企業} & \af{SMEs} & \af{イノベーションの普及} & \af{diffusion of innovations} \\
+  \af{DX（デジタルトランスフォーメーション）} & \af{digital transformation} & \af{IT人材} & \af{IT skills} \\
+  \af{業務効率化} & \af{productivity} & \af{情報セキュリティ} & \af{information security} \\
+  \af{AI導入} & \af{AI adoption} & \af{製造業} & \af{manufacturing} \\
+\end{wstabh}
+
+\work[50mm]{ワーク2}{データベースで検索する}
+\instr{CiNii Research、Google Scholar、J-STAGE、図書館の蔵書検索、官公庁の統計・白書などを使う。検索日と件数も記録する。}
+\begin{wstabh}{colspec={Q[l,wd=28mm,m] X[2,l,m] Q[c,wd=14mm,m] X[3,l,m]},row{2-Z}={ht=10mm}}
+  データベース & 検索語 & 件数 & 関係の深そうな文献 \\
+  \af{CiNii Research} & \af{中小企業 生成AI} & \af{（記録）} & \af{中小企業のAI活用に関する論文。題名と要旨をメモ} \\
+  \af{CiNii Research} & \af{中小企業 DX 課題} & \af{（記録）} & \af{中小企業のデジタル化の障壁を扱う論文} \\
+  \af{J-STAGE} & \af{技術受容 中小企業} & \af{（記録）} & \af{新しい技術の受け入れを扱う論文} \\
+  \af{Google Scholar} & \af{generative AI adoption SMEs} & \af{（記録）} & \af{海外の中小企業の生成AI導入に関する論文} \\
+  \af{官公庁サイト} & \af{中小企業白書／情報通信白書} & \af{—} & \af{白書・統計（下の文献リスト）} \\
+\end{wstabh}
+
+\work[60mm]{ワーク3}{AIが挙げた文献の実在を確かめる}
+\instr{AIに「文献を挙げて」と頼み、挙がったものをデータベースで確認する。}
+\begin{wstabh}{colspec={X[3,l,m] Q[c,wd=13mm,m] Q[c,wd=13mm,m] X[2,l,m]},row{2-Z}={ht=10mm}}
+  AIが挙げた文献 & 実在\newline ○× & 内容\newline 一致 & 確認先・違っていた点 \\
+  \af{中小企業の生成AI導入の障壁を分析したとされる論文（著者・学会誌名・年つき）} & \ans{×} & \ans{—} & \af{CiNii・J-STAGE とも該当なし} \\
+  \af{中小企業のAI活用を扱ったとされる書籍} & \ans{×} & \ans{—} & \af{蔵書検索・CiNii Books で該当なし} \\
+  \af{中小企業庁の中小企業白書} & \ans{○} & \ans{△} & \af{白書は実在。AIが示した数値は該当の年版に見当たらない} \\
+  \af{総務省の情報通信白書} & \ans{○} & \ans{○} & \af{総務省サイトで確認。生成AIを扱う章を特定した} \\
+  \af{海外の学術誌に載ったとされる英語論文} & \ans{○} & \ans{×} & \af{論文は実在するが、対象は大企業で中小企業ではない} \\
+\end{wstabh}
+{\small 集計：挙がった文献 \underline{\makebox[10mm]{\ans{5}}} 件のうち、実在しない \underline{\makebox[10mm]{\ans{2}}} 件、内容が違う \underline{\makebox[10mm]{\ans{2}}} 件}\par
+
+\work[80mm]{まとめ}{文献リスト（実在を確認した5件）}
+\begin{wstabh}{colspec={Q[c,wd=6mm,m] X[2,l,m] Q[c,wd=10mm,m] X[3,l,m] X[3,l,m] X[2,l,m]},row{2-Z}={ht=15mm}}
+  & 著者 & 年 & 題名 & 掲載誌・出版社、巻号・頁 & DOI・URL \\
+  1 & \af{中小企業庁} & \af{※} & \af{中小企業白書} & \af{中小企業庁（年次の白書）} & \af{chusho.meti.go.jp} \\
+  2 & \af{総務省} & \af{※} & \af{情報通信白書} & \af{総務省（年次の白書）} & \af{soumu.go.jp} \\
+  3 & \af{情報処理推進機構（IPA）} & \af{※} & \af{DX白書} & \af{情報処理推進機構} & \af{ipa.go.jp} \\
+  4 & \af{総務省・経済産業省} & \af{※} & \af{AI事業者ガイドライン} & \af{総務省・経済産業省} & \af{meti.go.jp} \\
+  5 & \af{総務省} & \af{※} & \af{通信利用動向調査} & \af{総務省（年次の調査報告）} & \af{soumu.go.jp} \\
+\end{wstabh}
+{\footnotesize\color{ans}※ 記入例では年次・版・URLの詳細を省いた。実際には、参照した版の発行年と、該当ページのURLまで書く。}\par
+
+\begin{nexttime}
+  \item 実在を確認した文献5件のリストを完成させる。うち1件は本文を入手する（復習4で読む）
+  \item AIが挙げた文献のうち、実在しなかった・内容が違ったものの数と例を記録しておく（上のワーク3）
+\end{nexttime}
+\aimemoA{関連分野・キーワードの洗い出し、文献の実在確認の練習}
+{「関連する学術分野と、検索キーワードを日本語と英語で10個ずつ。文献名は挙げないで」}
+{キーワードは、データベースで実際にヒットしたものだけを使った。AIが挙げた文献5件は確認できたものだけを残し、リストには自分で探した資料を使った。}
+{CiNii Research、J-STAGE、大学図書館の蔵書検索、中小企業庁・総務省・経済産業省・IPAの公式サイト}
+
+\begin{point}
+  \item 文献リストの必須項目（著者、発行年、題名、掲載誌または出版社、巻号と頁、DOIまたはURL）を揃える。年とURLが最も抜けやすい。
+  \item 記入例の文献は、実在が確実な白書・統計・ガイドラインに限っている。実際には、CiNii や J-STAGE で見つけた学術論文も少なくとも2件含めるとよい。
+  \item 「実在しても内容が違う」ケース（対象が大企業だった、数値がなかった）に気づけることが大切。
+  \item 件数は検索日によって変わるため、記入例では空欄にした。検索日と件数を記録する習慣をつける。
+\end{point}

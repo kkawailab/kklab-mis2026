@@ -44,3 +44,12 @@ python3 -m http.server 8000
 - `assets/css/pages.css` — 下層ページ（プログラミング入門・出席確認・検証・AI利用ガイド）用の共通スタイル（`assets/css/style.css` の後に読み込む）。
 
 教材は [kklab-is2026](https://kklab.mobi/kklab-is2026/) で公開しているものを本サイトのデザインに合わせて取り込んだものです。学習ページの確認コードは本サイトの `code.js`（鍵が異なる）で計算されるため、kklab-is2026 で取得したコードとは互換性がありません。
+
+## AI利用ガイドの復習教材
+
+- `ai-guide/index.html` の「復習教材」節 — 5つの単元（ハルシネーションの確認、問いの立て方、先行研究の探し方、文献の批判的な読み方、問いを磨く）の要点とプロンプト例。
+- `materials/ai-review/` — 各単元のワークシートと記入例（Teams で配布する。サイトからはリンクしていない）。
+  - `sessions/NN.tex` がワークシート、`answers/NN.tex` が記入例の原稿。体裁は `preamble.tex`（記入例は `answers-preamble.tex` も）。
+  - `worksheets.pdf`・`answers.pdf` が全単元版、`pdf/worksheet-NN.pdf`・`pdf/answers-NN.pdf` が単元ごとの版、`word/` が Word 版。
+  - `make` で LuaLaTeX 版と Word 版をすべて作り直す（使い方は `Makefile` 冒頭のコメント）。Word 版は `tex2docx.py` が同じ原稿から変換する。
+  - 基礎演習Ⅱ（kkawailab/kklab-basic-seminar）の第1〜5回のワークシートを、経営情報向けに組み直したもの。

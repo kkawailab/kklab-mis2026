@@ -1,0 +1,16 @@
+% ============================================================
+% 経営情報 2026 AI利用ガイド 復習教材　記入例の1単元分の版
+%   \sessionno に2桁の単元番号を与えて answers/NN.tex だけを組む。
+%   例：lualatex -jobname=answers-03 '\def\sessionno{03}\input{answers-session}'
+%   通常は make answers-03 または make answers-single で書き出す（Makefile を参照）。
+% ============================================================
+\input{preamble}
+\input{answers-preamble}
+
+\ifdefined\sessionno\else
+  \errmessage{\noexpand\sessionno が未定義です。例：lualatex '\noexpand\def\noexpand\sessionno{03}\noexpand\input{answers-session}'}
+\fi
+
+\begin{document}
+\input{answers/\sessionno}
+\end{document}
