@@ -53,3 +53,10 @@ python3 -m http.server 8000
   - `worksheets.pdf`・`answers.pdf` が全単元版、`pdf/worksheet-NN.pdf`・`pdf/answers-NN.pdf` が単元ごとの版、`word/` が Word 版。
   - `make` で LuaLaTeX 版と Word 版をすべて作り直す（使い方は `Makefile` 冒頭のコメント）。Word 版は `tex2docx.py` が同じ原稿から変換する。
   - 基礎演習Ⅱ（kkawailab/kklab-basic-seminar）の第1〜5回のワークシートを、経営情報向けに組み直したもの。
+
+## 学習ガイド
+
+- `materials/study-guide/study-guide.pdf` — 全15回の講義予定に沿った学習ガイド（Teams で配布する。サイトからはリンクしていない）。各回に「この回のねらい」「解説」「演習課題」「模範解答」「出席確認クイズの解説」を収録し、はじめに講義の概要、付録にAI活用記録とプロンプトの基本をまとめている。
+  - `study-guide.tex` が本体、`preamble.tex` が体裁（文書クラスは jlreq、LuaLaTeX で組む）。`cover.tex`・`intro.tex`・`appendix.tex` が表紙・序章・付録、`sessions/NN.tex` が各回の原稿。
+  - `quiz/NN.tex` は `attendance/attendanceNN.html` のクイズ（問題・選択肢・正解）に解説を加えたもの。クイズの問題や正解を変えたときは、こちらも合わせて更新する。
+  - `make` で `study-guide.pdf` を作り直す（`build/` に中間ファイルを出力）。`make open` で PDF を開く。

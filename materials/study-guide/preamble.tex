@@ -1,0 +1,165 @@
+% ============================================================
+% 経営情報 2026　学習ガイド　共通プリアンブル
+%   study-guide.tex から読み込む。体裁は materials/ai-review/preamble.tex に合わせている。
+% ============================================================
+\documentclass[paper=a4paper,fontsize=10pt,line_length=47zw,number_of_lines=43,baselineskip=1.6zw]{jlreq}
+
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{tabularray}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage[hidelinks,bookmarksdepth=2,bookmarksnumbered=false]{hyperref}
+\hypersetup{pdftitle={経営情報 2026 学習ガイド},pdfauthor={河合勝彦}}
+
+% ------------------------------------------------------------
+% 色（サイトの assets/css/style.css に合わせた基調色と、モジュールごとの色）
+% ------------------------------------------------------------
+\definecolor{ink}{HTML}{1D2330}
+\definecolor{inktwo}{HTML}{4A5261}
+\definecolor{inkthree}{HTML}{757D8A}
+\definecolor{rulegray}{HTML}{B9BEB4}
+\definecolor{papertwo}{HTML}{ECEEE8}
+\definecolor{bad}{HTML}{B3261E}    \definecolor{badtint}{HTML}{F9DEDA}
+\definecolor{mone}{HTML}{1E4A4A}   \definecolor{monetint}{HTML}{E3EFEA}
+\definecolor{mtwo}{HTML}{B5651D}   \definecolor{mtwotint}{HTML}{F7E7D5}
+\definecolor{mthree}{HTML}{2F5D8A} \definecolor{mthreetint}{HTML}{E0E9F3}
+\definecolor{mfour}{HTML}{6B3A6B}  \definecolor{mfourtint}{HTML}{EEE2EE}
+\colorlet{phase}{mone}
+\colorlet{phasetint}{monetint}
+
+% ------------------------------------------------------------
+% ページスタイル
+% ------------------------------------------------------------
+\newcommand*\sessionmark{}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\sffamily\scriptsize\color{inkthree}経営情報 2026　学習ガイド}
+\fancyfoot[R]{\sffamily\scriptsize\color{inkthree}\sessionmark\quad\thepage}
+\fancypagestyle{cover}{\fancyhf{}}
+
+\setlist{nosep,leftmargin=1.5em}
+\setcounter{tocdepth}{1}
+
+% ------------------------------------------------------------
+% 各回の見出し　\session{回}{日付}{時限}{モジュール 1-4}{題目}
+% ------------------------------------------------------------
+\newcommand*\modulename{}
+\newcommand\session[5]{%
+  \clearpage
+  \ifcase#4\or
+    \colorlet{phase}{mone}\colorlet{phasetint}{monetint}\renewcommand*\modulename{Module 01　経営と情報の基礎}\or
+    \colorlet{phase}{mtwo}\colorlet{phasetint}{mtwotint}\renewcommand*\modulename{Module 02　企業と情報システム}\or
+    \colorlet{phase}{mthree}\colorlet{phasetint}{mthreetint}\renewcommand*\modulename{Module 03　データと意思決定}\or
+    \colorlet{phase}{mfour}\colorlet{phasetint}{mfourtint}\renewcommand*\modulename{Module 04　デジタル時代の経営}\fi
+  \renewcommand*\sessionmark{第#1回　#5}%
+  \phantomsection\addcontentsline{toc}{section}{\texorpdfstring{第#1回　#5\hfill{\protect\small #2　#3}}{第#1回　#5}}%
+  \begin{tcolorbox}[enhanced,colback=phase,colframe=phase,arc=2mm,boxrule=0pt,
+      left=4mm,right=4mm,top=2.5mm,bottom=2.5mm,fontupper=\color{white}\sffamily]
+    {\small 第#1回　#2　#3　\textbar　\modulename}\par
+    \vspace{0.6mm}{\LARGE\bfseries #5}
+  \end{tcolorbox}
+  \vspace{1mm}%
+}
+
+% 序章などの見出し（目次には第1階層で載せる）
+\newcommand\intro[1]{%
+  \clearpage
+  \renewcommand*\sessionmark{#1}%
+  \phantomsection\addcontentsline{toc}{section}{#1}%
+  {\noindent\sffamily\LARGE\bfseries\color{phase}#1}\par
+  \vspace{1mm}\noindent{\color{phase}\rule{\linewidth}{1pt}}\par\vspace{3mm}}
+
+% 各回の中の節（解説・演習課題・模範解答・クイズ解説）
+\newcommand\guidesec[1]{%
+  \par\needspace{32mm}\vspace{4mm}%
+  \phantomsection\addcontentsline{toc}{subsection}{#1}%
+  {\noindent\sffamily\large\bfseries\color{phase}#1}\par
+  \vspace{0.6mm}\noindent{\color{phase}\rule{\linewidth}{0.6pt}}\par\vspace{2mm}}
+
+% 小見出し
+\newcommand\topic[1]{%
+  \par\needspace{18mm}\vspace{2.5mm}%
+  {\noindent\sffamily\bfseries\color{ink}#1}\par\vspace{0.6mm}}
+
+% ねらい
+\newcommand\goals[1]{%
+  \begin{tcolorbox}[enhanced,colback=phasetint,colframe=phasetint,arc=1.5mm,boxrule=0pt,
+      left=3mm,right=3mm,top=1.5mm,bottom=1.5mm,fontupper=\small]
+    {\sffamily\bfseries\color{phase}この回のねらい}\par
+    \begin{itemize}[label=\textcolor{phase}{・},leftmargin=1.2em]#1\end{itemize}
+  \end{tcolorbox}}
+
+% 演習の見出し　\exercise{番号}{題}
+\newcommand\exercise[2]{%
+  \par\needspace{30mm}\vspace{3mm}%
+  {\noindent\sffamily\bfseries\color{phase}■ 演習#1}\enspace{\sffamily\bfseries #2}\par\vspace{1mm}}
+
+% 指示文
+\newcommand\instr[1]{{\small\color{inktwo}#1}\par\vspace{1mm}}
+
+% プロンプト例
+\newtcolorbox{promptbox}[1][]{enhanced,colback=papertwo,colframe=papertwo,boxrule=0pt,
+  arc=1mm,leftrule=1.2mm,colbacktitle=papertwo,
+  borderline west={1.2mm}{0pt}{phase},left=3mm,right=2mm,top=1mm,bottom=1mm,
+  fontupper=\sffamily\footnotesize\color{inktwo},before skip=1mm,after skip=2mm,
+  title={\sffamily\scriptsize\bfseries\color{phase}プロンプト例　#1},
+  attach title to upper={\par\vspace{0.5mm}}}
+
+% 模範解答　\begin{answer}{演習1}
+\newtcolorbox{answer}[1]{enhanced,breakable,colback=white,colframe=phase,boxrule=0.6pt,arc=1.5mm,
+  left=3mm,right=3mm,top=1.5mm,bottom=1.5mm,fontupper=\small,
+  before skip=2mm,after skip=3mm,
+  title={\sffamily\bfseries 模範解答　#1},colbacktitle=phase,coltitle=white,
+  fonttitle=\small,toptitle=0.8mm,bottomtitle=0.8mm}
+
+% 注意
+\newtcolorbox{caution}[1]{enhanced,colback=badtint,colframe=badtint,boxrule=0pt,arc=1mm,
+  left=3mm,right=3mm,top=1mm,bottom=1mm,fontupper=\footnotesize,
+  before upper={{\sffamily\bfseries\color{bad}#1}\par}}
+
+% ポイント
+\newtcolorbox{point}[1]{enhanced,colback=phasetint,colframe=phasetint,boxrule=0pt,arc=1mm,
+  left=3mm,right=3mm,top=1mm,bottom=1mm,fontupper=\small,
+  before upper={{\sffamily\bfseries\color{phase}#1}\par}}
+
+% チェック項目
+\newenvironment{checks}{\begin{itemize}[label={□},leftmargin=1.5em,itemsep=0.8mm]\small}{\end{itemize}}
+
+% 表の共通スタイル
+\NewTblrEnviron{gtab}
+\SetTblrInner[gtab]{hlines={0.4pt,rulegray},vlines={0.4pt,rulegray},
+  cells={font=\small},rowsep=2pt,colsep=4pt}
+\NewTblrEnviron{gtabh}
+\SetTblrInner[gtabh]{hlines={0.4pt,rulegray},vlines={0.4pt,rulegray},
+  cells={font=\small},rowsep=2pt,colsep=4pt,
+  row{1}={bg=phasetint,font=\sffamily\footnotesize\bfseries}}
+
+% 表の前後の余白（表は \par\noindent で段落の先頭に置く）
+\AddToHook{env/gtab/after}{\par\vspace{1.2mm}}
+\AddToHook{env/gtabh/after}{\par\vspace{1.2mm}}
+\AddToHook{env/keywords/after}{\par\vspace{1.2mm}}
+
+% キーワード表　\begin{keywords}{} 用語 & 意味 \\ ... \end{keywords}（tabularray の環境なので空の引数 {} が要る）
+\NewTblrEnviron{keywords}
+\SetTblrInner[keywords]{colspec={Q[l,wd=34mm] X[l]},hlines={0.4pt,rulegray},vlines={0.4pt,rulegray},
+  cells={font=\small},rowsep=2pt,colsep=4pt,column{1}={font=\sffamily\small\bfseries}}
+
+% ------------------------------------------------------------
+% 出席確認クイズ　\quizq{番号}{問題文}{選択肢a}{選択肢b}{選択肢c}{選択肢d}{解説}
+%   正解の選択肢は \correct{...} で囲む（quiz/NN.tex は extract スクリプトで生成）。
+% ------------------------------------------------------------
+\newcommand\correct[1]{\textbf{#1}\enspace{\sffamily\bfseries\color{phase}［正解］}}
+\newcommand\quizq[7]{%
+  \par\needspace{34mm}\vspace{2.5mm}%
+  {\noindent\sffamily\bfseries\color{phase}Q#1.}\enspace #2\par
+  \begin{enumerate}[label=(\alph*),leftmargin=2.4em,labelsep=0.5em,itemsep=0.2mm,topsep=0.6mm]
+    \item #3 \item #4 \item #5 \item #6
+  \end{enumerate}
+  \begin{tcolorbox}[enhanced,breakable,colback=phasetint,colframe=phasetint,boxrule=0pt,arc=1mm,
+      left=2.5mm,right=2.5mm,top=1mm,bottom=1mm,fontupper=\small,before skip=1mm,after skip=2mm]
+    {\sffamily\bfseries\color{phase}解説}\enspace #7
+  \end{tcolorbox}}
